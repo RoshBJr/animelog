@@ -1,0 +1,171 @@
+// style pour la galerie des projets des etudiants
+.galerie_projet{
+    
+    &#galerie_projet{
+        @media (min-width: $breakpoint-tablette) {
+            min-width: auto;
+            padding-right: 20vw;
+        }
+    }
+
+    .container_section{
+        padding: 0 5%;
+    }
+    
+    // style du titre de section
+    .container_titre{
+        h1{
+            font-size: 34px;
+            margin-bottom: 20px;
+            color: $noir_fonce;
+            @media (min-width: $breakpoint-tablette) {
+                margin-block: 3vh;
+                font-size: 56px;
+                margin-left: 5vw;
+            }
+        }
+    }
+    // style pour le bloc avec les galeries
+    .container_info{
+        position: relative;
+
+        @media (min-width: $breakpoint-tablette) {
+            display: flex;
+            width: fit-content;
+            justify-content: space-around;
+        }
+
+        // sous titres des categories
+        h2{
+            font-size: 32px;
+            font-weight: 800;
+
+            @media (min-width: $breakpoint-tablette) {    
+                flex-shrink: 0;
+                position: absolute;
+                width: 70vw;
+            }
+        }
+        @media (min-width: $breakpoint-tablette) {    
+            @for $i from 1 through 99 { 
+                > h2:nth-of-type(#{$i}){
+                    left: $i * 5vw + ($i - 1) * 70vw;
+                }
+            }
+        }
+        
+
+        @media (min-width: $breakpoint-tablette) {    
+            .btns{
+                margin-left: -70vw;
+                width: 70vw;
+                flex-shrink: 0;
+                top: 45vh;
+            }
+        }
+
+        // bloc de galerie
+        .wp-block-gallery{
+            box-sizing: border-box;
+            border: 8px solid $noir_fonce;
+            border-radius: 53px;
+            overflow: hidden;
+            display: flex;
+            height: 520px;
+            position: relative;
+            margin: 0;
+            overflow: hidden;
+
+            @media (min-width: $breakpoint-tablette) {    
+                margin-top: 10vh;
+                height: 70vh;
+                width: 70vw;
+                flex-shrink: 0;
+                margin-left: 5vw;
+            }
+
+            flex-direction: column;
+
+            // chaque image + caption
+            figure{
+                display: none;
+                position: absolute;
+                display: flex;
+                width: 100%;
+                height: 100%;
+                flex-direction: column;
+                // image du projet
+                img{
+                    object-fit: cover;
+                    position: relative;
+                    width: 100%;
+                    height: 70%;
+                    aspect-ratio: auto;
+                }
+                // description du projet
+                figcaption{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: relative;
+                    margin: 0;
+                    width: 100%;
+                    height: 30%;
+                    background-color: $blanc_fonce;
+                    color: $noir_pale;
+
+                    // texte
+                    padding: 25px;
+                    font-family: $texte;
+                    font-size: 14px; 
+                    font-weight: 800;
+
+                    // ligne de contour
+                    box-sizing: border-box;
+                    border-top: 8px solid $noir_fonce;
+
+                    @media (min-width: $breakpoint-tablette) {
+                        font-size: 24px;
+                    } 
+                }
+
+            }
+            // style pour les images active, prochaine et precedente
+            figure.active, figure.bottom, figure.top{
+                z-index: 1;
+
+                // ajouter une petite transition
+                figcaption, img{
+                    transition: all 0.3s ease;
+                }
+            }
+            // style pour l'image active
+            figure.active{
+                img{
+                    left: 0;
+                }
+                figcaption{
+                    left: 0;
+                }
+            }
+            // style pour l'image precedente
+            figure.bottom{
+                img{
+                    left: 100%;
+                }
+                figcaption{
+                    left: -100%;
+                }
+            }
+            // style pour la prochaine image
+            figure.top{
+                img{
+                    left: -100%;
+                }
+                figcaption{
+                    left: 100%;
+                }
+            }
+        }
+    }
+}

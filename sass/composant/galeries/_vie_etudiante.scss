@@ -1,0 +1,169 @@
+// style pour la section avec la vie etudiante
+.vie_etudiante{
+
+    &#vie_etudiante{
+        @media (min-width: $breakpoint-tablette) {
+            width: auto;
+        }
+    }
+
+    .container_section{
+        @media (min-width: $breakpoint-tablette) {
+            padding: 0 100px;
+        }
+    }
+
+    // style du titre de section
+    .container_titre{
+        h1{
+            font-size: 34px;
+            color: $noir_fonce;
+            margin-bottom: 20px;
+
+            @media (min-width: $breakpoint-tablette) {
+                margin-block: 3vh;
+                font-size: 56px;
+            }
+        }
+    }
+
+    // ajuster la position des onglets dans la galerie
+    .onglets{
+        top: -52px;
+    }
+
+    // style pour le bloc avec les sous-titres et la galerie
+    .container_info{
+        position: relative;
+        margin: 0 25px;
+
+        @media (min-width: $breakpoint-tablette) {
+            display: flex;
+            width: auto;
+            justify-content: space-around;
+            flex-direction: column;
+
+            p{
+                position: absolute;
+                width: 30vw;
+                font-size: 1.4rem;
+                text-align: justify;
+            }
+        }
+
+        // style des sous-titres
+        h2{
+            font-size: 32px;
+            font-weight: 800;
+            color: $noir_pale;
+            @media (min-width: $breakpoint-tablette) {
+                position: absolute;
+                width: 45vw;
+                top: -6vh;
+                left: 37vw;
+            }
+        }
+        // desktop
+        @media (min-width: $breakpoint-tablette) {
+            > h2:nth-of-type(2){
+                top: 38vh;
+            }
+        }
+        // desktop
+        @media (min-width: $breakpoint-tablette) {    
+            .btns{
+                width: 45vw;
+                flex-shrink: 0;
+                top: -11vw;
+                left: 36vw;
+            }
+        }
+
+        // bloc de galerie
+        .wp-block-gallery{
+            box-sizing: border-box;
+            border: 8px solid $blanc_pale;
+            border-radius: 53px;
+            overflow: hidden;
+            display: flex;
+            height: 520px;
+            position: relative;
+            margin: 0;
+            overflow: hidden;
+            
+            // desktop
+            @media (min-width: $breakpoint-tablette) {    
+                margin-top: 4vh;
+                height: 35vh;
+                width: 45vw;
+                flex-shrink: 0;
+                margin-left: 36vw;
+            }
+
+            // changer l'orientation en mode tablette
+            @media screen and (max-width: $breakpoint-tablette-small) {
+                flex-direction: column;
+                img{
+                    height: 100%;
+                }
+            }
+            // chaque image + caption
+            figure{
+                display: none;
+                position: absolute;
+                display: flex;
+                width: 100%;
+                height: 100%;
+                flex-direction: row;
+                @media screen and (max-width: $breakpoint-tablette-small) {    
+                    flex-direction: column;
+                }
+        
+                img{
+                    object-fit: cover;
+                    position: relative;
+                    width: 50%;
+                    aspect-ratio: auto;
+
+                    // desktop
+                    @media screen and (min-width: $breakpoint-tablette-small) {    
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                @media screen and (max-width: $breakpoint-tablette-small) {
+                    img{
+                        width: 100%;
+                    }
+                }
+            }
+            // style general pour les images actif, precedente et prochaine (top/bottom)
+            figure.active, figure.bottom, figure.top{
+                z-index: 1;
+                img{
+                    transition: all 0.3s ease;
+                }
+            }
+            // style pour l'image active
+            figure.active{
+                img{
+                    left: 0;
+                }
+            }
+            // style pour la prochaine image
+            figure.bottom{
+                img{
+                    left: 100%;
+                }
+            }
+            // style pour l'image precedente
+            figure.top{
+                img{
+                    left: -100%;
+                }
+            }
+
+        }
+    }
+}

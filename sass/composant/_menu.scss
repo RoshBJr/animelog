@@ -1,0 +1,177 @@
+// style pour le bouton de navigation du menu
+// superpose le menu burger
+.menu{
+	z-index: 97;
+}
+// style pour creer les animations et le visuel du menu (pas le bouton)
+div .menu{
+	z-index: 99;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 0%;
+	height: 100%;
+    transition: 0.5s ease-in-out;
+    overflow: hidden;
+    background-color: $vert_menu;
+	margin: 0;
+	padding: 0;
+	white-space: nowrap;
+
+	
+	// style pour quand le bouton est ouvert
+    &.open{
+        width: 100%;
+    }
+
+	// style pour les sections de navigations
+	li{
+		font-size: 38px;
+		margin: 0 10% 0 11%;
+		padding: 20px 0;
+		list-style: none;
+		width: 80%;
+		border-bottom: 2px solid $noir_fonce;
+		
+		// style pour les liens cliquables
+		a{
+			-webkit-tap-highlight-color: transparent;
+			transition: all 0.3s ease;
+			color: $noir_pale;
+			font-family: $gros_titre;
+			text-decoration: none;
+		}
+		a:hover{
+			color: $blanc_pale;
+
+		}
+	}
+	li:last-of-type{
+		border-bottom: none;
+	}
+}
+
+// style du container du bouton 
+// Adapte de https://codepen.io/fromwireframes/pen/arMrYp
+.btn_menu{
+	z-index: 100;
+	border-radius: 100%; 
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+	border: 3px solid $noir_pale; 
+
+	// style pour tablette et desktop
+	@media screen and (min-width: $breakpoint-tablette) {    
+		width: 60px; 
+    	height: 60px;
+	}
+}
+// style du bouton
+.menu-icon {
+	cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+
+	// style de base du bouton
+	.menu-icon__cheeckbox {
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: relative;
+		cursor: pointer;
+		z-index: 20;
+		-webkit-touch-callout: none;
+		position: absolute;
+		opacity: 0;
+	}
+	// style general des divs dans le bouton
+	div {
+		margin: auto;
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		bottom: 0;
+		width: 22px;
+		height: 14px;
+
+		// style tablette
+		@media screen and (min-width: $breakpoint-tablette) {    
+			width: 33px; 
+			height: 21px;
+		}
+	}
+	// style general des barres dans le bouton
+	span {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 4px;
+		background-color: $noir_fonce;
+		border-radius: 2px;
+		transition: all 0.2s cubic-bezier(0.1, 0.82, 0.76, 0.965);
+
+		// placer une des barres en haut et l'autre en bas
+		&:first-of-type {
+			top: 0;
+		}
+		&:last-of-type {
+			bottom: 0;
+		}
+	}
+	// quand le bouton est actif
+	&.active,
+	.menu-icon__cheeckbox:checked + div {
+		span {
+			// tourner les barres et les monter legerement
+			&:first-of-type {
+				transform: rotate(45deg);
+				top: 5px;
+
+				// style tablette
+				@media screen and (min-width: $breakpoint-tablette) {    
+					top: 8px; 
+				}
+			}
+			&:last-of-type {
+				transform: rotate(-45deg);
+				bottom: 5px;
+
+				// style tablette
+				@media screen and (min-width: $breakpoint-tablette) {    
+					bottom: 8px; 
+				}
+			}
+		}
+	}
+
+	// quand on survole le bouton du menu en desktop, changer la taille des barres
+	&.active:hover span:first-of-type,
+	&.active:hover span:last-of-type,
+	&:hover .menu-icon__cheeckbox:checked + div span:first-of-type,
+	&:hover .menu-icon__cheeckbox:checked + div span:last-of-type {
+		width: 22px;
+		@media screen and (min-width: $breakpoint-tablette) {    
+			width: 33px; 
+		}
+	}
+
+	// style general de hover pour le bouton
+	&:hover {
+		// pas besoin de hover sur mobile
+		@media (min-width: $breakpoint-tablette) {
+			span:first-of-type {
+				width: 30px;
+			}
+
+			span:last-of-type {
+				width: 23px;
+			}
+		}
+	}
+}

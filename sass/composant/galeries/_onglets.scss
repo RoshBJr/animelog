@@ -1,0 +1,27 @@
+// style pour les onglets dans les galeries (pour voir nb d'images totales et celle active)
+// style de base pour le container
+.onglets{
+    display: none;
+    position: relative;
+    top: -173px;
+    z-index: 50;
+    // display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 90%;
+    margin-left: 5%;
+    background-color: transparent !important;
+
+    // style pour 1 onglet
+    .onglet{
+        margin: 0 3px;
+        background-color: $blanc_fonce;
+        height: 5px;
+        opacity: 0.4;
+        transition: all 0.3s ease;
+    }
+    // style pour l'onglet actif
+    .onglet.active{
+        opacity: 1;
+    }
+}

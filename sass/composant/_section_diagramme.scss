@@ -1,0 +1,217 @@
+/*--------------------------------------------------------------------------------------------------------------
+                                                LAYOUT MOBILE
+--------------------------------------------------------------------------------------------------------------*/
+.toutes_les_sections
+{
+    .diagramme // section diagramme
+    {
+        .container_section // container ayant toutes les balises
+        {
+            height: 100vh;
+
+            .container_titre // container du titre de la section Diagramme
+            {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 10vh;
+
+                h1
+                {
+                    margin-left: 0px;
+                    width: 80%;
+                    text-align: left;
+                }
+            }
+            .container_info // balise ayant les diagrammes et la descripiton
+            {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                height: 85vh;
+                
+                .diagramme_desc // balise ayant le texte de description
+                {
+                    margin: 0;
+                    padding: 0;
+                    width: 80%;
+                    height: 20vh;
+                    overflow: auto;
+                    text-overflow:ellipsis;
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+
+                    &::-webkit-scrollbar
+                    {
+                        display: none;
+                    }
+                }
+                .diagrammes // balise ayant les deux diagrammes
+                {
+                    height: 65vh;
+                    width: 80vw;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: space-around;
+                    
+                    .diagramme_un // premier diagramme
+                    {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 27.5vh;
+                        width: 45.5vh;
+
+                        img
+                        {
+
+                            color: $noir_fonce;
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                    .diagramme_deux // deuxième diagramme
+                    {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 27.5vh;
+                        width: 45.5vh;
+
+                        img
+                        {
+
+                            color: $noir_fonce;
+                            width: 100%;
+                            height: 100%;
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*--------------------------------------------------------------------------------------------------------------
+                                                FIN LAYOUT MOBILE
+--------------------------------------------------------------------------------------------------------------*/
+
+/*--------------------------------------------------------------------------------------------------------------
+                                                LAYOUT TABLETTE
+--------------------------------------------------------------------------------------------------------------*/
+@media (min-width: $breakpoint-tablette-small) and (max-width: $breakpoint-tablette)
+{
+    .toutes_les_sections
+    {
+        .diagramme // section diagramme
+        {
+            .container_section // container ayant toutes les balises
+            {
+                .container_info // container du titre de la section Diagramme
+                {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    .diagramme_desc // balise ayant le texte de description
+                    {
+                        height: 25%;
+                    }
+                    .diagrammes // balise ayant les deux diagrammes
+                    {
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: center;
+                        width: 90vw;
+
+                        .diagramme_un // premier diagramme
+                        {
+                            height: 32vw;
+                            width: 40vw;
+                        }
+                        .diagramme_deux // deuxieme diagramme
+                        {
+                            height: 32vw;
+                            width: 40vw;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+/*--------------------------------------------------------------------------------------------------------------
+                                            FIN LAYOUT TABLETTE
+--------------------------------------------------------------------------------------------------------------*/
+
+/*--------------------------------------------------------------------------------------------------------------
+                                                LAYOUT DESKTOP
+--------------------------------------------------------------------------------------------------------------*/
+@media( min-width: 993px)
+{
+    .toutes_les_sections
+    {
+        .diagramme // section diagramme
+        {
+            display: flex;
+            justify-content: flex-end;
+            .container_section // container ayant toutes les balises
+            {
+                width: calc(100vw - 100px);
+
+                .container_titre // container du titre de la section Diagramme
+                {
+                    h1
+                    {
+                        width: 90%;
+                        text-align: right;
+                    }
+                }
+                .container_info // container du titre de la section Diagramme
+                {
+                    display: flex;
+                    flex-direction: row-reverse;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    width: calc(100vw - 100px);
+                    height: 90vh;
+                    
+                    .diagramme_desc // balise ayant le texte de description
+                    {
+                        width: 40vw;
+                        height: auto;
+                        font-size: 2vw;
+                        text-align: justify;
+                        color: $noir_pale;
+                    }
+                    .diagrammes // balise ayant les deux diagrammes
+                    {
+                        justify-content: space-evenly;
+                        width: 39vw;
+                        height: 90vh;
+
+                        .diagramme_un // premier diagramme
+                        {
+                            width: 53vh;
+                            height: 40vh;
+
+                        }
+                        .diagramme_deux // deuxieme diagramme
+                        {
+                            width: 53vh;
+                            height: 40vh;
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+/*--------------------------------------------------------------------------------------------------------------
+                                            FIN LAYOUT DESKTOP
+--------------------------------------------------------------------------------------------------------------*/

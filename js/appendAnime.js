@@ -3,10 +3,12 @@ import data from '/json/ghibli.json' assert {type: 'json'};
 
 console.log(data);
 
+let dataMovies = data.films;
+let numMovies = data.films.length;
+
 function GetMovieTitles() {
+    
     let titlesArray = [];
-    let dataMovies = data.films;
-    let numMovies = data.films.length;
 
     for(let i = 0; i< numMovies; i++) {
         titlesArray.push(dataMovies[i].title);
@@ -16,9 +18,8 @@ function GetMovieTitles() {
     
 }
 function GetMovieImages() {
+    
     let imgsArray = [];
-    let dataMovies = data.films;
-    let numMovies = data.films.length;
 
     for(let i = 0; i< numMovies; i++) {
         imgsArray.push(dataMovies[i].image);
@@ -28,10 +29,9 @@ function GetMovieImages() {
     
 }
 function GetMovieBanners() {
+    
     let bannersArray = [];
-    let dataMovies = data.films;
-    let numMovies = data.films.length;
-
+    
     for(let i = 0; i< numMovies; i++) {
         bannersArray.push(dataMovies[i].movie_banner);
     }

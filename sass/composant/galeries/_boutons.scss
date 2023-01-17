@@ -1,0 +1,67 @@
+// container des boutons de galerie
+.btns{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    position: relative;
+    top: -300px;
+    z-index: 50;
+    -webkit-tap-highlight-color: transparent;
+
+    .btn:hover{
+        opacity: 1;
+        cursor: pointer;
+        
+    }
+    // chaque bouton de galerie, creer une forme de triangle
+    .btn {
+        transition: all 0.3s;
+
+        position: relative;
+        color: $blanc_pale;
+        border-left: 5px solid transparent;
+        border-bottom: 5px solid;
+        margin: 0 10px;
+        width: 0px;
+        height: 0px;
+        opacity: 0.7;
+
+        &.btn-droit, &.btn-gauche{
+            width: 35px;
+            height: 26px;
+        }
+    }
+    .btn,
+    .btn::before {
+        display: block;
+        box-sizing: border-box;
+        border-right: 5px solid transparent
+    }
+    .btn::before {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border-left: 5px solid;
+        border-top: 5px solid;
+        border-bottom: 5px solid transparent;
+        transform: rotate(45deg) skew(10deg,10deg);
+        left: -3px;
+        bottom: -19px;
+    }
+
+    // ajuster l'orientation du bouton selon s'il est a gauche ou a droite
+    .btn-droit{
+        transform: rotateZ(270deg);
+    }
+    .btn-droit:hover{
+        transform: rotateZ(270deg) scale(1.2);
+    }
+    .btn-gauche{
+        transform: rotateZ(90deg);
+    }
+    .btn-gauche:hover{
+        transform: rotateZ(90deg) scale(1.2);
+    }
+}

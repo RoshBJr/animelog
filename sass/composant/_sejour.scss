@@ -1,0 +1,251 @@
+/*--------------------------------------------------------------------------------------------------------------
+                                                LAYOUT MOBILE
+--------------------------------------------------------------------------------------------------------------*/
+.sejour {   // Page au complet
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $blanc_fonce;
+    width: 100vw;
+    font-weight: 800;
+    font-style: italic;
+    overflow-x: hidden;
+
+    .wp-block-group__inner-container {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .sejour_sejour, .sejour_tim, .sejour_ici {  // Ton séjour au TIM commence ici!
+        align-self: center;
+    }
+    
+    .sejour_sejour {    // Ton séjour au
+        font-size: 4rem;
+        padding-top: 3rem;
+        margin-right: 7rem;
+        margin-bottom: 1rem;
+    }
+    
+    .sejour_tim {   // TIM
+        color: $vert_fonce;
+        font-size: 8rem;
+        position: absolute;
+        transform: translateX(2.5rem) translateY(11rem);
+    }
+    
+    .sejour_ici {   // commence ici!
+        font-size: 2.5rem;
+        letter-spacing: 0.2rem;
+        padding-bottom: 3rem;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    
+    .container_section {
+        display: flex;
+        flex-direction: column;
+        justify-content: stretch;
+    }
+    
+    .container_info  {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+    
+        .sejour_ton {
+            display: none;
+        }
+    
+        .icone_galerie_desktop {    // galerie des touches de glavier en desktop
+            display: none;
+        }
+    }
+    
+    hr {    // Séparateur
+        border: 2.5px solid $noir_fonce;
+        border-radius: 5px;
+        color: $noir_fonce;
+        background-color: $noir_fonce;
+        width: 100%;
+    }
+}
+
+/*--------------------------------------------------------------------------------------------------------------
+                                                FIN LAYOUT MOBILE
+--------------------------------------------------------------------------------------------------------------*/
+
+/*--------------------------------------------------------------------------------------------------------------
+                                                LAYOUT TABLETTE
+--------------------------------------------------------------------------------------------------------------*/
+
+.sejour{
+    @media (min-width: $breakpoint-tablette-small) and (max-width: $breakpoint-tablette) {
+        .sejour_sejour {    // Ton séjour au
+            font-size: 7em;
+            padding-top: 3rem;
+            margin-bottom: 3rem;
+            margin-right: 16rem;
+        }
+    
+        .sejour_tim {       // TIM
+            color: $vert_fonce;
+            font-size: 15em;
+            position: absolute;
+            transform: translateX(4rem) translateY(17rem);
+        }
+    
+        .sejour_ici {       // Commence ici!
+            font-size: 5em;
+            padding-bottom: 3rem;
+        }
+    
+        .sejour hr {    // Séparateur
+            border: 4px solid $noir_fonce;
+        }
+    
+        .bande_icone_haut img {
+            width: 100rem;
+            height: 12rem;
+        }
+    
+        .bande_icone_bas img {
+            width: 85rem;
+            height: 12rem;
+        }
+    }
+}
+
+/*--------------------------------------------------------------------------------------------------------------
+                                            FIN LAYOUT TABLETTE
+--------------------------------------------------------------------------------------------------------------*/
+
+/*--------------------------------------------------------------------------------------------------------------
+                                                LAYOUT DESKTOP
+--------------------------------------------------------------------------------------------------------------*/
+
+.sejour{
+    @media( min-width: 993px) {
+        display: flex;
+        justify-content: flex-start;
+        border-right: 6px solid $noir_fonce;
+    
+        hr { // Séparateur
+            display: none;
+        }
+    
+        .container_section .container_titre
+        {
+            display: none;
+        }
+        .container_info {
+            overflow: hidden;
+            display: flex;
+            justify-content:flex-start;
+            align-content: center;
+            align-items: center;
+            //border-right: 6px solid $noir_fonce;
+            flex-flow: row nowrap;
+            height: 100vh;
+            width: 100vw;
+            padding-left:100px;
+    
+            .sejour_ton {
+                display: flex;
+                flex-direction: row;
+                font-size: clamp(4rem, 6vw, 8rem);
+            }
+    
+            .sejour_tim {
+                font-size: clamp(13rem, 16vw, 22rem);
+                position: inherit;
+                transform: rotate(-5deg);
+            }
+    
+            .sejour_ici {
+                /***** Le rapprocher du texte qui est plus haut ******/
+                transform: translateY(-80%);
+            }
+    
+            .sejour_bloc_1
+            {
+                display: flex;
+                width: 50vw;
+                height: 100%;
+                flex-direction: column;
+                justify-content: center;
+                border-right: 6px solid $noir_fonce;
+            }
+    
+            .bande_icone_haut { // icone clavier haut du mobile/tabl
+                display: none;
+            }
+    
+            .bande_icone_bas {  // icone clavier bas du mobile/tabl
+                display: none;
+            }
+    
+            .figure_bas{
+                display: none;
+            }
+    
+            .icone_galerie_desktop {    // Galerie icone clavier pour desktop
+                overflow: hidden;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                // align-content: center;
+                // max-height: 0.2rem;
+                // width: 0.2rem;
+                width: 50vw;
+                margin: 0;
+                // border-left: 6px solid $noir_fonce;
+                figure
+                {
+                    margin-block-start: 0em;
+                    margin-block-end: 0em;
+                    margin-inline-start: 0px;
+                    margin-inline-end: 0px;
+                    animation: animClavierDesktopA 10s forwards linear infinite;
+                    img
+                    {
+                        padding-top: 2rem;
+                    }
+                }
+    
+                figure:nth-of-type(4), figure:nth-of-type(5), figure:nth-of-type(6), figure:nth-of-type(10), figure:nth-of-type(11), figure:nth-of-type(12){
+                    animation: animClavierDesktopB 10s forwards linear infinite;
+                }
+    
+            }
+        }
+    
+        .sejour_sejour {
+            display: none;
+        }
+    
+        .sejour_ton, .sejour_tim, .sejour_ici { // Ton séjour au TIM commence ici!
+            font-size: clamp(3em, 5vw, 5em);
+    
+            margin: 0;
+            padding: 0;
+            transform: translateX(0) translateY(0);
+        }
+    }
+}
+
+
+@keyframes animClavierDesktopA{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(calc(-100% - 0.5em));
+    }
+}
+@keyframes animClavierDesktopB{
+    0%{
+        transform: translateX(calc(-100% - 0.5em));
+    }
+    100%{
+        transform: translateX(0);
+    }
+}

@@ -1,0 +1,304 @@
+header
+{
+    .presentation // contenu integral de la section presentation
+    {
+        .container // container ayant tous les titres
+        {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .presentation_h1 // TIM
+            {
+                color: $vert_fonce;
+                width: 90%;
+                text-align: left;
+                font-size: 5em;
+            }
+            .presentation_h2 // Maisonneuve
+            {
+                color: $noir_fonce;
+                width: 90%;
+                text-align: right;
+                font-size: 2.5em;
+            }
+            .presentation_h3 // Technique d'integration multimedia de
+            {
+                color: $noir_fonce;
+                text-align: center;
+                font-size: 1.7em;
+            }
+        }
+        .container_icone_defile // container ayant le texte 'faire defiler' et l'icone defilement
+        {
+            height: 10vh;
+            align-self: flex-end;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            text-decoration: none;
+            color: $noir_fonce;
+            opacity: 1;
+
+            .icone_defilement // l'icone defile
+            {
+                width: 2.8em;
+                height: 2.5em;
+                background-color: $vert_fonce;
+                clip-path: polygon(50% 60%, 100% 30%, 50% 90%, 0% 30%);
+                animation: rebond 3s infinite;
+
+                //animation de l'icone de defilement
+                @keyframes rebond 
+                {
+                    from, to { transform: scale(1, 1); }
+                    5% { transform: scale(0.9, 1.1); }
+                    10% { transform: scale(1.1, 0.9); }
+                    15% { transform: scale(0.95, 1.05); }
+                }
+            }
+            @keyframes fadeOut {
+                0%
+                {
+                    opacity: 1;
+                }
+                100%
+                {
+                    opacity: 0;
+                    pointer-events: none;
+                }
+            }
+            @keyframes fadeIn {
+                0%
+                {
+                    opacity: 0;
+                }
+                100%
+                {
+                    opacity: 1;
+                    pointer-events: all;
+                }
+            }
+            
+        }
+    }
+}
+
+/*--------------------------------------------------------------------------------------------------------------
+                                                LAYOUT TABLETTE
+--------------------------------------------------------------------------------------------------------------*/
+@media( min-width: $breakpoint-tablette-small) and (max-width: $breakpoint-tablette)
+{
+    header
+    {
+        .presentation // contenu integral de la section presentation
+        {
+            .container // container ayant tous les titres
+            {
+                height: 85vh;
+                .presentation_h1 // TIM
+                {
+                    color: $vert_fonce;
+                    width: 90%;
+                    text-align: left;
+                    font-size: 10em;
+                }
+                .presentation_h2 // Maisonneuve
+                {
+                    color: $noir_fonce;
+                    width: 90%;
+                    text-align: right;
+                    font-size: 5em;
+                }
+                .presentation_h3 // Technique d'integration multimedia de
+                {
+                    color: $noir_fonce;
+                    text-align: center;
+                    font-size: 3.4em;
+                }
+            }
+            .container_icone_defile // container ayant le texte 'faire defiler' et l'icone de defilement
+            {
+                height: 15vh;
+                align-self: flex-end;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .texte_defilement // le texte du defilement
+                {
+                    font-size: 3em;
+                }
+                .icone_defilement
+                {
+                    width: 5.6em;
+                    height: 5em;
+                    background-color: $vert_fonce;
+                    clip-path: polygon(50% 60%, 100% 30%, 50% 90%, 0% 30%);
+                    animation: rebond 3s infinite;
+                
+                
+                }
+            }
+        }
+    }
+}
+/*--------------------------------------------------------------------------------------------------------------
+                                            FIN LAYOUT TABLETTE
+--------------------------------------------------------------------------------------------------------------*/
+
+/*--------------------------------------------------------------------------------------------------------------
+                                                LAYOUT DESKTOP
+--------------------------------------------------------------------------------------------------------------*/
+@media( min-width: 993px)
+{
+    header
+    {
+        position: relative;
+
+        .bordure_lateral // container ayant le menu burger et le titre TIM
+        {
+            z-index: 99;
+            position: fixed;
+            background-color: $blanc_fonce;
+            width: 100px;
+            height: 100vh;
+        }
+        .bg_burger_menu // le background pour modifier le fond du contenu et la bordure
+        {
+            z-index: 100;
+            height: 100vh;
+            width: 98px;
+            position: fixed;
+            background-color: $blanc_fonce;
+            border-right: 3px solid $noir_fonce;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .btn_menu // css pour mettre le menu burger en haut a gauche
+            {
+                z-index: 100;
+                border-radius: 100%; 
+                position: fixed;
+                top: 15px;
+                left: 15px;
+                width: 60px;
+                height: 60px;
+                border: 3px solid $noir_pale;
+            }
+            .titre_burger_menu // Titre TIM  sur la bordure
+            {
+                z-index: 100;
+                margin: 0;
+                padding: 0;
+                transform: rotate(-90deg) translateY(-100%);
+            }
+            @keyframes slideTim {
+                0%
+                {
+                    pointer-events: all;
+                    opacity: 1;
+                    transform: rotate(-90deg) translateY(-100%);
+                }
+                100%
+                {
+                    transform: rotate(-90deg) translateY(0%);
+                }
+            }
+            @keyframes slideoutTim {
+                0%
+                {
+                    pointer-events: none;
+                    transform: rotate(-90deg) translateY(0%);
+                }
+                100%
+                {
+                    opacity: 0;
+                    transform: rotate(-90deg) translateY(-100%);
+                }
+            }
+        }
+
+        .site // container pour acceder aux boitesRondes
+        {
+            z-index: 20;
+
+            .boiteRond // modifie la grosseur des boite ronde
+            {
+                width: 220vh;
+                height: 220vh;
+            }
+        }
+
+        .presentation // contenu integral de la section presentation
+        {
+            display: flex;
+            flex-direction: row;
+
+            .container // container ayant tous les titres
+            {
+                z-index: 19;
+                width: 85%;
+                height: 100vh;
+                .presentation_h1 // TIM
+                {
+                    margin: 0;
+                    z-index: 10;
+                    width: 90%;
+                    text-align: left;
+                    font-size: 10em;
+                }
+                .presentation_h2 // Maisonneuve
+                {
+                    margin: 0;
+                    color: $noir_fonce;
+                    width: 90%;
+                    text-align: right;
+                    font-size: 5em;
+                }
+                .presentation_h3 // Technique d'integration multimedia de
+                {
+                    margin: 0;
+                    text-align: center;
+                    font-size: 3.4em;
+                }
+            }
+
+            .container_icone_defile // container avec le texte 'faire defiler' et l'icone de defilement
+            {
+                width: 15%;
+                height: 100%;
+                align-self: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                .texte_defilement // le texte 'faire defiler'
+                {
+                    text-decoration: none;
+                    margin: 0;
+                    padding: 0;
+                }
+                .icone_defilement // l'icone
+                {
+                    width: 5.6em;
+                    height: 5em;
+                    background-color: $vert_fonce;
+                    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 74% 50%);
+                    animation: rebond 3s infinite;
+                
+                
+                }
+            }
+        }
+    }
+}
+/*--------------------------------------------------------------------------------------------------------------
+                                            FIN LAYOUT DESKTOP
+--------------------------------------------------------------------------------------------------------------*/

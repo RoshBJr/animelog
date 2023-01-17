@@ -1,0 +1,16 @@
+@use "sass:math";
+/************************************* variable pour gerer la taille des sections ********************************************/
+$nb_sections: 8;
+$taille_site: 800;
+$taille_header_footer: math.div($taille_site, $nb_sections);
+$nb_autres_sections: $nb_sections - 2;
+$taille_autres_sections: $taille_site - 200;
+$taille_une_des_autres_sections: math.div($taille_autres_sections, $nb_autres_sections);
+$taille_section_presentation: 100%;
+
+// breakpoints pour les media queries
+$breakpoint-mobile-small: 320px;
+$breakpoint-mobile: 600px;
+$breakpoint-tablette-small: 768px;
+$breakpoint-tablette: 992px;
+$breakpoint-desktop-large: 1200px;

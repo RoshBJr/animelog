@@ -1,0 +1,472 @@
+// section avec la liste des enseignants
+.enseignants{
+    &#enseignants{
+        @media (min-width: $breakpoint-tablette) {
+            min-width: auto;
+            padding-right: 10vw;
+        }
+    }
+    .container_section{
+        padding: 0 5%;
+        @media (min-width: $breakpoint-tablette) {
+            height: 100vh;
+        }
+
+        // taille du titre et sous-titre
+        .container_titre{
+            font-size: 27px;
+            h1{
+                color: $noir_fonce;
+                @media (min-width: $breakpoint-tablette) {
+                    margin-block: 3vh;
+                }
+            }
+        }
+        .container_info{
+            overflow: hidden;
+
+            @media (min-width: $breakpoint-tablette) {
+                width: fit-content;
+                padding-right: 26px;
+                height: 80%;
+            }
+            h1{
+                font-size: 48px;
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    // container pour le Faire defiler
+    .container_icone_defile
+    {
+        width: 100%;
+        height: 100%;
+        align-self: center;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 22px;
+
+        @media (min-width: $breakpoint-mobile) {
+            display: none;
+        }
+        
+        // contenu dans le container
+        .texte_defilement
+        {
+            color: $blanc_pale;
+            margin: 0;
+            padding: 0;
+            font-size: 25px;
+            font-weight: 800;
+        }
+        .icone_defilement
+        {
+            color: $noir_fonce;
+            width: 2.8em;
+            height: 1.5em;
+            margin-left: -14px;
+            background-color: $noir_fonce;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 74% 50%);
+            animation: rebond 3s infinite;
+        }
+    }
+
+    // la galerie des profs: 2 rangees de profs en mobile
+    .galerie-prof{
+        position: relative;
+        display:grid;
+        grid-auto-flow:column dense;
+        grid-template-rows:50% 50%;
+        grid-auto-columns:250px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        border: 8px solid $noir_fonce;
+        border-radius: 20px;
+        column-gap: 8px;
+        row-gap: 4px;
+        background-color: $noir_fonce;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        width: 100%;
+
+        @media (min-width: $breakpoint-mobile) {
+            overflow-x: hidden;
+            overflow-y: hidden;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto;
+            grid-auto-flow: row;
+            row-gap: 4px;
+        }
+        @media (min-width: $breakpoint-tablette) {
+            height: 100%;
+            width: fit-content;
+            grid-auto-columns: 250px;
+            grid-template-rows: 33% 33% 33%;
+            grid-template-columns: inherit;
+            row-gap: 8px;
+            grid-auto-flow: column;
+        }
+
+        // ajuster la position des boutons de la galerie
+        .btns{
+            display: none;
+            position: absolute;
+            top: 50%;
+            color: $blanc_pale;
+    
+            // mettre a zero le style des boutons de la galerie
+            .btn{
+                background: none;
+                color: inherit;
+                border: none;
+                padding: 0;
+                font: inherit;
+                cursor: pointer;
+                outline: inherit;
+            }
+        }
+        // style de base pour chaque carte de prof quand la galerie nest pas active
+        .un-prof{
+            cursor: pointer;
+            line-height: 0;
+            
+            // le nom du prof
+            .nom-prof{
+                display: none;
+                height: auto;
+                font-family: $gros_titre;
+                font-size: 30px;
+                font-style: italic;
+                font-weight: 800;
+                line-height: 46px;
+                color: $vert_fonce;
+
+                @media (min-width: $breakpoint-mobile) {
+                    font-size: clamp(40px, 6vw, 60px);
+                }
+            }
+            // la description du prof
+            .desc-prof{
+                display: none;
+                font-family: $texte;
+                font-size: 15px;
+                font-weight: 800;
+                line-height: 18px;
+            }
+            // la photo du prof
+            img, .comique{
+                object-fit: cover;
+                width: 250px;
+                height: 300px;
+                @media (min-width: $breakpoint-tablette-small) {
+                    object-position: 0% 20%;
+                }
+
+                @media (min-width: $breakpoint-mobile) {
+                    width: 100%;
+                }
+                @media (min-width: $breakpoint-tablette) {
+                    height: 100%;
+                }
+            }
+
+            .comique{
+                opacity: 0;
+                position: relative;
+                top: -100%;
+                transition: 0.4s all;
+
+                @media (max-width: $breakpoint-tablette){
+                    top: -305px;
+                    margin-bottom: -300px;
+                }
+                
+            }
+            .comique:hover{
+                opacity: 1;
+            }
+        }
+    
+        // le container avec les boutons Retour et Prochain prof
+        .btns-bas{
+            z-index: 10;
+            transition: all 0.5s;
+            -webkit-tap-highlight-color: transparent;
+            width: 95%;
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            transform: translateY(200px);
+            font-family: $gros_titre;
+            font-size: 24px;
+            font-weight: 800;
+            margin-left: 2.5%;
+            padding-top: 18px;
+            bottom: 20px;
+
+            @media (min-width: $breakpoint-mobile) {
+                justify-content: space-around;
+                margin-left: 0;
+                width: 100%;
+            }
+            @media (min-width: $breakpoint-tablette) {
+                width: 40%;
+                right: 0;
+            }
+    
+            // mettre a zero le style des boutons Retour et Prochain prof
+            .btn-retour, .btn-prochain{
+                display: none;
+                background: none;
+                color: inherit;
+                border: none;
+                padding: 0;
+                font: inherit;
+                cursor: pointer;
+                outline: inherit;
+            }
+    
+            // style du bouton retour
+            .btn-retour{
+                color: $blanc_fonce;
+                background-color: $noir_pale;
+                height: 86px;
+                width: 157px;
+                border-radius: 43px;
+            }
+            // style du bouton prochain prof
+            .btn-prochain{
+                text-align: left;
+                padding-left: 18px;
+                color: $noir_pale;
+                background-color: $vert_fonce;
+                height: 86px;
+                width: 157px;
+                border-radius: 19px;
+
+                @media (min-width: $breakpoint-mobile) {
+                    width: 216px;
+                }
+            }
+        }
+    
+        // style de la galerie lorsqu'elle est active (quand on clique sur un prof)
+        &.actif{
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            border-radius: 0;
+            border: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            background-color: $blanc_fonce;
+            overflow: hidden;
+            @media (min-width: $breakpoint-tablette) {
+                left: 100px;
+                width: calc(100% - 100px);
+            }
+            
+
+            // afficher les boutons pour changer d'image
+            .btns{
+                display: flex;
+            }
+            // faire glisser les boutons Retour et Prochain prof en bas
+            .btns-bas{
+                border-top: 5px solid $noir_fonce;
+                transform: translateY(0px);
+            }
+            // apparaitre les boutons Retour et Prochain prof
+            .btn-retour{
+                display: block;
+            }
+            .btn-prochain{
+                display: block;
+            }
+    
+            // style de base pour la galerie des profs en plein ecran mobile
+            .un-prof{
+                cursor: default;
+                position: absolute;
+                display: flex;
+                width: 100%;
+                height: 100%;
+                flex-direction: column;
+                pointer-events: none;
+                @media (min-width: $breakpoint-tablette) {
+                    flex-direction: row;
+                }
+
+                // style pour les infos des profs inactifs
+                .nom-prof, .desc-prof{
+                    margin-left: 5%;
+                    opacity: 0;
+                }
+                .nom-prof{
+                    padding: 10px 0;
+                    display: block;
+                }
+                .desc-prof{
+                    display: block;
+                }
+        
+                // style pour les images des profs 
+                img{
+                    object-fit: cover;
+                    position: relative;
+                    height: 60%;
+                    aspect-ratio: auto;
+                    object-position: 0% 20%;
+                }
+
+                .comique{
+                    display: none;
+                }
+                
+                // style la description des profs
+                .desc-prof{
+                    position: relative;
+                    width: 90%;
+                    height: calc(35% - 165px);
+                    overflow-y: scroll;
+                    background-color: $blanc_fonce;
+                    color: $noir_pale;
+                    box-sizing: border-box;           
+                    // enlever la barre a gauche pour mobile
+                    @media (min-width: $breakpoint-mobile) {    
+                        border-left: 0;
+                        overflow-y: hidden;
+                        margin-top: 20px;
+                    }
+                    @media (min-width: $breakpoint-tablette) {
+                        width: 40%;
+                        height: 100%;
+                        margin: 0;
+                        padding: 5%;
+                        font-size: clamp(15px, 8vh, 24px);
+                        line-height: 33px;
+                    }
+                }
+    
+                // style pour les images en mode tablette
+                @media (max-width: $breakpoint-tablette-small) {
+                    img{
+                        width: 100%;
+                    }
+                }
+                @media (min-width: $breakpoint-tablette) {
+                    img{
+                        border-right: 5px solid $noir_fonce;
+                        width: 60%;
+                        height: 100%;
+                    }
+                }
+            }
+            // style pour les images actives et a cote (images precedente et prochaine)
+            .un-prof.active, .un-prof.bottom, .un-prof.top{
+                z-index: 1;
+                // ajouter une petite transition
+                .desc-prof, img{
+                    transition: all 0.4s ease;
+                }
+
+                .nom-prof{
+                    @media (min-width: $breakpoint-mobile) {    
+                        border-bottom: 5px solid $noir_fonce;
+                        width: 100%;
+                        margin-left: 0;
+                        padding-left: 5%;
+                        padding-top: 15px;
+                    }
+                    @media (min-width: $breakpoint-tablette) {
+                        position: absolute;
+                        border: none;
+                        bottom: 20px;
+                        left: -65px;
+                        font-size: clamp(40px, 6vw, 60px);
+                        padding-left: 74px;
+                    }
+                }
+            }
+            // style pour le prof actif
+            .un-prof.active{
+                pointer-events: auto;
+                z-index: 2;
+                // centrer le prof
+                img, .desc-prof{
+                    top: 0px;
+                }
+                // mettre l'opacite a 1 pour un effet d'apparition
+                .desc-prof, .nom-prof{
+                    opacity: 1;
+                }
+    
+                // centrer les images gauche droit pour tablette
+                @media (max-width: $breakpoint-tablette) {    
+                    img{
+                        top: 0;
+                        left: 0;
+                    }
+                    .desc-prof{
+                        top: 0;
+                        left: 0;
+                    }
+                }
+
+                .comique{
+                    @media (min-width: $breakpoint-tablette) {
+                        display: block;
+                        position: absolute;
+                        top: 0px;
+                        left: 0px;
+                    }
+                }
+            }
+            // style image precedente celle active
+            .un-prof.bottom{
+                img{
+                    top: 100%;
+                }
+                .desc-prof{
+                    top: -100%;
+                }
+    
+                @media (max-width: $breakpoint-tablette) {    
+                    img{
+                        left: 100%;
+                        top: 0;
+                    }
+                    .desc-prof{
+                        left: -100%;
+                        top: 0;
+                    }
+                }
+            }
+            // style image prochaine celle active
+            .un-prof.top{
+                img{
+                    top: -100%;
+                }
+                .desc-prof{
+                    top: 100%;
+                }
+    
+                @media (max-width: $breakpoint-tablette) {    
+                    img{
+                        left: -100%;
+                        top: 0;
+                    }
+                    .desc-prof{
+                        left: 100%;
+                        top: 0;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+.main_404{
+    width: 100%;
+    z-index: 18;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    h1, h2{
+        margin: 0;
+        padding: 0;
+        padding-top: 30px;
+        color: $noir_pale; 
+        text-align: center;
+    }
+
+    @media screen and (min-width: $breakpoint_tablette){
+        width: calc(100% - 100px);
+        left: 100px;
+    }
+}
+.main_404+footer // accèder aux script, mais cacher la balise
+{
+    display: none;
+}
