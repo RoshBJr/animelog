@@ -2,7 +2,7 @@ import { GetMovieBanners, GetMovieTitles, GetMovieImages } from "./appendAnime.j
 
 let theBody = document.querySelector("body");
 
-function enqueueMovies() {
+function enqueueMovies(paramImg, paramTitle, paramContainer) {
     
     for(let i = 0; i < GetMovieTitles().length; i++) {
         

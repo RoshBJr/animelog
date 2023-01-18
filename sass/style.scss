@@ -2,9 +2,9 @@
 VARIABLES
 --------------------------------------------------------- */
 // @import "variables/couleurs";
-// @import "variables/taille_section";
+@import "variables/taille_section";
 // @import "variables/taille_titres";
-// @import "variables/police";
+@import "variables/police";
 // @import "variables/fontes_defaut";
 
 // /* ---------------------------------------------------------
@@ -48,6 +48,6 @@ VARIABLES
 // /* ---------------------------------------------------------
 // LAYOUT
 // --------------------------------------------------------- */
-// @import "layout/layout_mobile";
+@import "layout/layout_mobile";
 // @import "layout/layout_tablette";
 // @import "layout/layout_web";

@@ -17,6 +17,7 @@ function GetMovieTitles() {
     return titlesArray;
     
 }
+
 function GetMovieImages() {
     
     let imgsArray = [];
@@ -28,6 +29,7 @@ function GetMovieImages() {
     return imgsArray;
     
 }
+
 function GetMovieBanners() {
     
     let bannersArray = [];

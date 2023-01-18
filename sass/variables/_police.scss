@@ -1,7 +1,2 @@
-$gros_titre: decoy, serif;
-$texte: fira-sans, sans-serif;
-p { font-family: $texte; }
-h4 {font-family: $texte;}
-h1 {font-family: $gros_titre;}
-h2 {font-family: $gros_titre;}
-h3 {font-family: $gros_titre;}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300&display=swap');
+$title:'Montserrat Alternates', sans-serif;
