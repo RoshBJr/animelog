@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+html {
+    --richBlack: #0d1321;
+    --prussianBlue: #1d2d44;
+    --darkElectricBlue: #3e5c76;
+    --shadowBlue: #748cab;
+    --grossePolice: 'Comfortaa';
+}
+
+body {
+    margin: 0;
+}
+
+.headerNav {
+    border: 2px red solid;
+    background-color: var(--richBlack);
+    color: var(--shadowBlue);
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    padding: 0 2rem;
+    font-family: var(--grossePolice), cursive;
+}
+span {
+    font-family: var(--grossePolice), cursive;
+    padding: 0 1rem 0 0;
+}
+span:last-child {
+    
+    padding: 0 2rem 0 0;
+}
