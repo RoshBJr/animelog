@@ -1,11 +1,11 @@
 import '../components/css/listeDesAnimes.css';
-import SingleAnime from './SingleAnime';
+import SingleAnimeHome from './SingleAnimeHome';
 
 export default function ListeDesAnimes() {
 
     return (
         <section className="listeDesAnimes">
-            <SingleAnime/>
+            <SingleAnimeHome/>
         </section>
     );
 }

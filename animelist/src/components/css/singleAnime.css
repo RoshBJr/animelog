@@ -1,8 +1,0 @@
-.item {
-    border: 2px red solid;
-    background-color: var(--richBlack);
-    color: var(--shadowBlue);
-
-    width: 25vw;
-    height: 25vw;
-}
