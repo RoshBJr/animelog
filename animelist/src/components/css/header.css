@@ -1,19 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
-
-html {
-    --richBlack: #0d1321;
-    --prussianBlue: #1d2d44;
-    --darkElectricBlue: #3e5c76;
-    --shadowBlue: #748cab;
-    --grossePolice: 'Comfortaa';
-}
-
 body {
     margin: 0;
 }
 
 .headerNav {
-    border: 2px red solid;
+    /* border: 2px red solid; */
     background-color: var(--richBlack);
     color: var(--shadowBlue);
 

@@ -1,11 +1,14 @@
 import '../components/css/listeDesAnimes.css';
 import SingleAnimeHome from './SingleAnimeHome';
+import data from '../json/ghibli.json';
 
 export default function ListeDesAnimes() {
-
+    
     return (
         <section className="listeDesAnimes">
-            <SingleAnimeHome/>
+            {data.films.map((serie:any) =>
+                <SingleAnimeHome imgSrc={serie.image} title={serie.title}/>
+            )}
         </section>
     );
 }

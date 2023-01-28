@@ -1,0 +1,11 @@
+.item {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 25vw;
+    height: 80vh;
+    background-color: var(--richBlack);
+    color: var(--shadowBlue);
+}

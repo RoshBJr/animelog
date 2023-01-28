@@ -4,12 +4,17 @@ import Cover from './Cover';
 import Score from './Score';
 import Title from './Title';
 
-export default function SingleAnimeHome() {
+interface CardInfo {
+    imgSrc: string;
+    title: string;
+}
+
+export default function SingleAnimeHome({imgSrc, title}: CardInfo) {
 
     return(
         <div className='item'>
-            <Cover/>
-            <Title/>
+            <Cover img={imgSrc}/>
+            <Title titleProps={title}/>
             <Score/>
             <Add/>
         </div>

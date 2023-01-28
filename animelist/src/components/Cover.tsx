@@ -1,7 +1,13 @@
-export default function Cover() {
+import './css/cover.css';
+
+interface Props {
+    img: string;
+}
+
+export default function Cover({img}: Props) {
     return (
         <div className='cover'>
-            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/npOnzAbLh6VOIu3naU5QaEcTepo.jpg" alt="" />
+            <img src={img} alt="" />
         </div>
     );
 }
