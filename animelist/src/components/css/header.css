@@ -17,11 +17,11 @@ h1 {
     padding: 0 2rem;
     font-family: var(--grossePolice), cursive;
 }
-span {
+button {
     font-family: var(--grossePolice), cursive;
     padding: 0 1rem 0 0;
 }
-span:last-child {
+button:last-child {
     
     padding: 0 2rem 0 0;
 }
