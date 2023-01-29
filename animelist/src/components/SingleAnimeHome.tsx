@@ -14,9 +14,11 @@ export default function SingleAnimeHome({imgSrc, title}: CardInfo) {
     return(
         <div className='item'>
             <Cover img={imgSrc}/>
-            <Title titleProps={title}/>
-            <Score/>
-            <Add addImgSrc={imgSrc} addTitle={title}/>
+            <div className='itemContainerInfo'>
+                <Title titleProps={title}/>
+                <Score/>
+                <Add addImgSrc={imgSrc} addTitle={title}/>
+            </div>
         </div>
     );
 }
