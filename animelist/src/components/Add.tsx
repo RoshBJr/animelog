@@ -3,6 +3,8 @@ import './css/add.css';
 import SingleAnimeMyList from './SingleAnimeMyList';
 import data from '../json/ghibli.json'
 
+export let emptyMyList:boolean = true;
+
 interface Props {
     addImgSrc: string;
     addTitle: string;
@@ -11,6 +13,7 @@ interface Props {
 export default function Add({addImgSrc, addTitle}: Props) {
 
     function AddToList() {
+        emptyMyList = false;
         AddToArray(addTitle, addImgSrc);
     }
 
@@ -21,9 +24,11 @@ export default function Add({addImgSrc, addTitle}: Props) {
         </div>
     );
 }
+
 let arrayTitles:any = [];
 let arrayImgs: any = [];
 export const obj: any = {"films": []};
+
 function AddToArray(theTitle:string, theImg: string) {
     arrayTitles.push(theTitle);
     arrayImgs.push(theImg);

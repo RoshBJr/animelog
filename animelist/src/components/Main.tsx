@@ -2,6 +2,7 @@ import './css/main.css';
 import { useState } from 'react';
 import ListeDesAnimes from './ListeDesAnimes';
 import MyListDesAnimes from './MyListDesAnimes';
+import { emptyMyList } from './Add';
 
 export default function Main() {
 
@@ -12,7 +13,11 @@ export default function Main() {
     }
 
     function MyList() {
-        setPageComponent(<MyListDesAnimes/>);
+        SetPageComponentEmpty(emptyMyList)
+    }
+
+    function SetPageComponentEmpty(empty: boolean) {
+        setPageComponent(<MyListDesAnimes isEmpty={empty}/>);
     }
 
     return (
