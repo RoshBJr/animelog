@@ -1,9 +1,9 @@
-import './css/header.css';
+import './css/main.css';
 import { useState } from 'react';
 import ListeDesAnimes from './ListeDesAnimes';
 import MyListDesAnimes from './MyListDesAnimes';
 
-export default function Header() {
+export default function Main() {
 
     const [PageComponent, setPageComponent] = useState(<ListeDesAnimes/>);
 
@@ -15,16 +15,16 @@ export default function Header() {
         setPageComponent(<MyListDesAnimes/>);
     }
 
-    return(
+    return (
         <>
             <header className="headerNav">
                 <h1>AnimeLoG</h1>
                 <nav>
-                    <button onClick={ReturnHome}>Home</button>
-                    <button onClick={MyList}>My list</button>
+                    <span onClick={ReturnHome}>Home</span>
+                    <span onClick={MyList}>My list</span>
                 </nav>
             </header>
             {PageComponent}
-        </>
+        </>  
     );
 }

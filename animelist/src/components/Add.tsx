@@ -1,9 +1,30 @@
+import { title } from 'process';
 import './css/add.css';
+import SingleAnimeMyList from './SingleAnimeMyList';
+import data from '../json/ghibli.json'
 
-export default function Add() {
+interface Props {
+    addImgSrc: string;
+    addTitle: string;
+}
+
+export default function Add({addImgSrc, addTitle}: Props) {
+
+    function AddToList() {
+        AddToArray(addTitle, addImgSrc);
+    }
+
     return (
         <div className="add">
-            <span>add</span>
+            <span onClick={AddToList}>add</span>
+
         </div>
     );
+}
+let arrayTitles:any = [];
+let arrayImgs: any = [];
+function AddToArray(theTitle:string, theImg: string) {
+    arrayTitles.push(theTitle);
+    arrayImgs.push(theImg);
+    console.log(arrayImgs, arrayTitles);
 }

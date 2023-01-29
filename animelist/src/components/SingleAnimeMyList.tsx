@@ -1,5 +1,3 @@
-import '../components/css/singleAnimeHome.css';
-import Add from './Add';
 import Cover from './Cover';
 import Score from './Score';
 import Title from './Title';
@@ -9,14 +7,13 @@ interface CardInfo {
     title: string;
 }
 
-export default function SingleAnimeHome({imgSrc, title}: CardInfo) {
+export default function SingleAnimeMyList({imgSrc, title}: CardInfo) {
 
     return(
         <div className='item'>
             <Cover img={imgSrc}/>
             <Title titleProps={title}/>
             <Score/>
-            <Add addImgSrc={imgSrc} addTitle={title}/>
         </div>
     );
 }

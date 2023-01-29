@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Header from './components/Header';
+import Main from './components/Main';
 import ListeDesAnimes from './components/ListeDesAnimes';
 import MyListDesAnimes from './components/MyListDesAnimes';
 import './components/css/color.css';
@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header/>
+      <Main/>
     </div>
   );
 }
