@@ -23,8 +23,10 @@ export default function Add({addImgSrc, addTitle}: Props) {
 }
 let arrayTitles:any = [];
 let arrayImgs: any = [];
+export const obj: any = {"films": []};
 function AddToArray(theTitle:string, theImg: string) {
     arrayTitles.push(theTitle);
     arrayImgs.push(theImg);
-    console.log(arrayImgs, arrayTitles);
+    let objMovie: any = {"title":{theTitle}, "img": {theImg}};
+    obj.films.push(objMovie);
 }
