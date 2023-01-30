@@ -12,8 +12,10 @@ export default function SingleAnimeMyList({imgSrc, title}: CardInfo) {
     return(
         <div className='item'>
             <Cover img={imgSrc}/>
-            <Title titleProps={title}/>
-            <Score/>
+            <div className='itemContainerInfo'>
+                <Title titleProps={title}/>
+                <Score/>
+            </div>
         </div>
     );
 }

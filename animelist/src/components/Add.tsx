@@ -1,26 +1,35 @@
 import { title } from 'process';
 import './css/add.css';
-import SingleAnimeMyList from './SingleAnimeMyList';
 import data from '../json/ghibli.json'
+import { useState } from 'react';
+import { objHome } from './ListeDesAnimes';
 
 export let emptyMyList:boolean = true;
 
 interface Props {
     addImgSrc: string;
     addTitle: string;
+    addText: string;
+    id: number;
 }
 
-export default function Add({addImgSrc, addTitle}: Props) {
+
+export default function Add({addImgSrc, addTitle, addText, id}: Props) {
+    
+    const [buttonText, setButtonText] = useState(addText);
 
     function AddToList() {
+        if(objHome.info[id]['button']['theText'] === 'add') {
+            AddToArray(addTitle,addImgSrc);
+        }
+        setButtonText('added');
+        objHome.info[id]['button']['theText'] = 'added';
         emptyMyList = false;
-        AddToArray(addTitle, addImgSrc);
     }
 
     return (
         <div className="add">
-            <span onClick={AddToList}>add</span>
-
+            <span onClick={AddToList}>{buttonText}</span>
         </div>
     );
 }
