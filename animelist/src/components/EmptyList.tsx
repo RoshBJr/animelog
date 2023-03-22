@@ -1,5 +1,5 @@
 import cinema from '../cinema.svg';
-import './css/emptyList.css';
+import './css/emptyList.scss';
 
 export default function EmptyList() {
     

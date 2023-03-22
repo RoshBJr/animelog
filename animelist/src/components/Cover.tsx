@@ -1,4 +1,4 @@
-import './css/cover.css';
+import './css/cover.scss';
 
 interface Props {
     img: string;

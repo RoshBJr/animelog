@@ -1,8 +1,8 @@
 import { title } from 'process';
-import './css/add.css';
+import './css/add.scss';
 import data from '../json/ghibli.json'
 import { useState } from 'react';
-import { objHome } from './ListeDesAnimes';
+// import { objHome } from './ListeDesAnimes';
 
 export let emptyMyList:boolean = true;
 
@@ -19,11 +19,12 @@ export default function Add({addImgSrc, addTitle, addText, id}: Props) {
     const [buttonText, setButtonText] = useState(addText);
 
     function AddToList() {
-        if(objHome.info[id]['button']['theText'] === 'add') {
+        if(addText === 'add') {
             AddToArray(addTitle,addImgSrc);
         }
         setButtonText('added');
-        objHome.info[id]['button']['theText'] = 'added';
+        console.log(data.films[id].title);
+        // objHome.info[id]['button']['theText'] = 'added';
         emptyMyList = false;
     }
 
@@ -43,4 +44,4 @@ function AddToArray(theTitle:string, theImg: string) {
     arrayImgs.push(theImg);
     let objMovie: any = {"title":{theTitle}, "img": {theImg}};
     obj.films.push(objMovie);
-}
+}   

@@ -1,4 +1,4 @@
-import '../components/css/singleAnimeHome.css';
+import '../components/css/singleAnimeHome.scss';
 import Add from './Add';
 import Cover from './Cover';
 import Score from './Score';

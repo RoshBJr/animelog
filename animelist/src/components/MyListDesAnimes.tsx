@@ -1,6 +1,6 @@
 import SingleAnimeMyList from "./SingleAnimeMyList";
 import { obj } from "./Add";
-import '../components/css/myListDesAnimes.css';
+import '../components/css/myListDesAnimes.scss';
 import EmptyList from "./EmptyList";
 
 function componentNotEmpty() {
