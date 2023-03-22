@@ -1,10 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 import Main from './components/Main';
 import ListeDesAnimes from './components/ListeDesAnimes';
 import MyListDesAnimes from './components/MyListDesAnimes';
-import './components/css/color.css';
+import './components/css/color.scss';
 import { useState } from 'react';
 
 function App() {

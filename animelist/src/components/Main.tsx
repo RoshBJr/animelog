@@ -1,4 +1,4 @@
-import './css/main.css';
+import './css/main.scss';
 import { useState } from 'react';
 import ListeDesAnimes from './ListeDesAnimes';
 import MyListDesAnimes from './MyListDesAnimes';

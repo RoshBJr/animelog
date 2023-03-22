@@ -1,4 +1,4 @@
-import './css/title.css';
+import './css/title.scss';
 
 interface Props {
     titleProps: string;
