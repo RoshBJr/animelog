@@ -1,17 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.scss';
-import Main from './components/Main';
-import ListeDesAnimes from './components/ListeDesAnimes';
-import MyListDesAnimes from './components/MyListDesAnimes';
-import './components/css/color.scss';
 import { useState } from 'react';
-
+import Header from './components/Header';
+import ListOfAnimes from './components/ListOfAnimes';
 function App() {
+  const item = localStorage.getItem("anime-list-ls");
+  const [list, setList] = useState(
+    !item ? []: JSON.parse(item)
+  )
+
+  useEffect( () => {
+    localStorage.setItem("anime-list-ls", JSON.stringify(list));
+    console.log(list);
+  },[list])
 
   return (
     <div className="App">
-      <Main/>
+      <Header/>
+      <ListOfAnimes
+        list={list}
+        setList={setList}
+      />
     </div>
   );
 }
