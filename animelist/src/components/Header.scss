@@ -1,0 +1,21 @@
+
+@import './css/color.scss';
+
+header {
+    width: 100vw;
+    height: auto;
+    padding: 2%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    color: white;
+    font-family: $grossePolice;
+    background-color: $richBlack;
+
+    .links {
+        align-self: flex-end;
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 10px;
+    }
+}
