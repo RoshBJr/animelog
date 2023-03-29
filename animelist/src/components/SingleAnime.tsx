@@ -7,26 +7,32 @@ interface UIProps {
     title:string;
     list:any[];
     setList:Function;
+    statusText:string[];
 }
 
-export default function SingleAnime({id,img, title, list, setList}:UIProps) {
-    
-    const [status, setStatus] = useState("add");
-    // const [text, setText] = useState("add");
+export default function SingleAnime({id, img, title, statusText, list, setList}:UIProps) {
     
     function addToLs() {
-        // setText(status? "added": "add");
-        setStatus("added");
-        console.log('damn bro');
-        setList([
-            ...list,
-            {
-                id: id,
-                title: title,
-                status: "added",
-                img: img
-            }
-        ])
+        setList(
+            list.map(
+                single => {
+                    if(single.id === id) {
+                        return(
+                            {
+                                id: id,
+                                title: title,
+                                img: img,
+                                status: "none",
+                                showStatus: ["added"],
+                                numEpisodes: 1
+                            }
+                        );
+                    }
+                    return single;
+                }
+            )
+        )
+        console.log(statusText[0]);
     }
 
     return(
@@ -34,7 +40,7 @@ export default function SingleAnime({id,img, title, list, setList}:UIProps) {
             <img src={img} alt={title}/>
             <div className="containerInfo">
                 <h2 className="title">{title}</h2>
-                <span onClick={status === 'add'? addToLs: () => null} className="status">{status}</span>
+                <span onClick={addToLs} className="status">{statusText[0]}</span>
             </div>
         </div>
     );

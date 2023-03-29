@@ -13,13 +13,14 @@ export default function ListOfAnimes({list, setList}:UIProps) {
     return (
         <div className="containerAnimes">
             {
-                data.films.map(
+                list.map(
                     singleAnime =>
                         <SingleAnime
                             key={singleAnime.id}
                             id={singleAnime.id}
-                            img={singleAnime.image}
-                            title={singleAnime.original_title}
+                            img={singleAnime.img}
+                            title={singleAnime.title}
+                            statusText={singleAnime.showStatus}
                             list={list}
                             setList={setList}
                         />
