@@ -1,13 +1,19 @@
 import './Header.scss';
 
-export default function Header() {
+interface UIProps {
+    list:any[];
+    filterUserList: Function;
+    filterHomeList: Function;
+}
+
+export default function Header({list, filterUserList, filterHomeList}:UIProps) {
 
     return (
         <header>
             <h1>AnimeLoG</h1>
             <div className="links">
-                <span className="homeList">Home</span>
-                <span className="myList">My list</span>
+                <button onClick={() => filterHomeList()} className="homeList">Home</button>
+                <button onClick={() => filterUserList()} className="myList">My list</button>
             </div>
         </header>
     );

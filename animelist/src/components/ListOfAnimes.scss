@@ -1,0 +1,25 @@
+@import './css/color.scss';
+
+.containerAnimes {
+    background-color: $prussianBlue;
+    min-height: 100vh;
+}
+
+.containerMyListVide {
+    min-height: 100vh;
+    background-color: $prussianBlue;
+    display: flex;
+    flex-flow: column wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        color: $shadowBlue;
+    }
+
+    img {
+        width: 80px;
+        height: 80px;
+    }
+}
