@@ -1,12 +1,18 @@
 @import './css/color.scss';
 
 .containerAnimes {
+    flex: auto;
     background-color: $prussianBlue;
-    min-height: 100vh;
+    display: flex;
+    flex-flow: column wrap;
+
+    @media (min-width: 486px) {
+        flex-flow: row wrap;
+    }
 }
 
 .containerMyListVide {
-    min-height: 100vh;
+    flex: auto;
     background-color: $prussianBlue;
     display: flex;
     flex-flow: column wrap;

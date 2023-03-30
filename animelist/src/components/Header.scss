@@ -2,9 +2,13 @@
 @import './css/color.scss';
 
 header {
+    height: fit-content;
+    z-index: 99;
+    position: sticky;
+    top: 0;
     width: 100vw;
     height: auto;
-    padding: 2%;
+    padding: 5% 3% 3% 3%;
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
@@ -12,10 +16,23 @@ header {
     font-family: $grossePolice;
     background-color: $richBlack;
 
+    @media (min-width: 1100px) {
+        padding: 2% 2% 2% 2%;
+    }
+    
+    @media (min-width: 1570px) {
+        padding: 2% 1% 1% 1%;
+        
+    }
+
     .links {
         align-self: flex-end;
         display: flex;
         flex-flow: row nowrap;
         gap: 10px;
+
+        span {
+            cursor: pointer;
+        }
     }
 }

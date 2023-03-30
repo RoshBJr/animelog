@@ -31,6 +31,7 @@ export default function ListOfAnimes({list, setList, myListActive}:UIProps) {
                             statusText={singleAnime.showStatus}
                             list={list}
                             setList={setList}
+                            myListActive={myListActive}
                         />
                 )
             }

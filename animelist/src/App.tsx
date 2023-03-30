@@ -12,7 +12,7 @@ data.films.map(
     jsonData.push(
     {
       id: serie.id,
-      title: serie.original_title,
+      title: serie.title,
       img: serie.image,
       status: "none",
       showStatus: ["add"],
@@ -22,8 +22,12 @@ data.films.map(
 )
 
 function App() {
-
   
+  // useful for responsive development
+
+  // window.addEventListener("resize", () => {
+  //  console.log(window.innerWidth);
+  // })
   
   const item:any = localStorage.getItem("anime-list-ls");
   const [myList, setMyList] = useState([]);
@@ -35,7 +39,6 @@ function App() {
       if(!myListActive) {
         localStorage.setItem("anime-list-ls", JSON.stringify(list));
       }
-      // console.log(list);
     },[list])
     
     function filterUserList() {
@@ -50,13 +53,11 @@ function App() {
           }
         )
       )
-      console.log('filtered user list');
     }
 
     function filterHomeList() {
       setMyListActive(false);
       setList(JSON.parse(item));
-      console.log("filtered home list");
     }
 
   return (

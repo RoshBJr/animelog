@@ -12,8 +12,8 @@ export default function Header({list, filterUserList, filterHomeList}:UIProps) {
         <header>
             <h1>AnimeLoG</h1>
             <div className="links">
-                <button onClick={() => filterHomeList()} className="homeList">Home</button>
-                <button onClick={() => filterUserList()} className="myList">My list</button>
+                <span onClick={() => filterHomeList()} className="homeList">Home</span>
+                <span onClick={() => filterUserList()} className="myList">My list</span>
             </div>
         </header>
     );
