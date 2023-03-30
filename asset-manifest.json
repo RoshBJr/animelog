@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/animelog/static/css/main.492fb8df.css",
+    "main.js": "/animelog/static/js/main.941594e6.js",
+    "static/media/cinema.svg": "/animelog/static/media/cinema.00bbdb8bdaac3c6b69971ed597a7efe9.svg",
+    "index.html": "/animelog/index.html",
+    "main.492fb8df.css.map": "/animelog/static/css/main.492fb8df.css.map",
+    "main.941594e6.js.map": "/animelog/static/js/main.941594e6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.492fb8df.css",
+    "static/js/main.941594e6.js"
+  ]
+}
