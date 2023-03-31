@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './SingleAnime.scss';
 import StatusFilter from './UI/StatusFilter';
+import modifyAnimePropsLs from '../lib/addAnimeToLS';
 
 interface UIProps {
     id:string;
@@ -18,37 +19,7 @@ interface UIProps {
 export default function SingleAnime({filterMyListG, statusG, id, img, title, status, statusText, list, setList, myListActive}:UIProps) {
     
     function addToLs() {
-        setList(
-            list.map(
-                single => {
-                    if(single.id === id && single.showStatus[0] === "add") {
-                        return(
-                            {
-                                id: id,
-                                title: title,
-                                img: img,
-                                status: "Watching",
-                                showStatus: ["added"],
-                                numEpisodes: 1
-                            }
-                        );
-                    }
-                    else if(single.id === id && single.showStatus[0] === "added") {
-                        return(
-                            {
-                                id: id,
-                                title: title,
-                                img: img,
-                                status: "none",
-                                showStatus: ["add"],
-                                numEpisodes: 1
-                            }
-                        );
-                    }
-                    return single;
-                }
-            )
-        )
+        modifyAnimePropsLs({setList,list,id,title,img});
     }
 
     return(

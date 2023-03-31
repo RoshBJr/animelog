@@ -1,12 +1,11 @@
 import './Header.scss';
 
 interface UIProps {
-    list:any[];
     filterUserList: Function;
     filterHomeList: Function;
 }
 
-export default function Header({list, filterUserList, filterHomeList}:UIProps) {
+export default function Header({filterUserList, filterHomeList}:UIProps) {
 
     return (
         <header>

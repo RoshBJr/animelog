@@ -4,6 +4,8 @@ import { useState } from 'react';
 import Header from './components/Header';
 import ListOfAnimes from './components/ListOfAnimes';
 import data from './json/ghibli.json';
+import userList from './lib/FilterUserList';
+import statusFilterList from './lib/StatusFilterList';
 
 const jsonData:any[] = [];
 
@@ -45,34 +47,10 @@ function App() {
     useEffect(() => {
       filterMyList(statusG)
     }, [myListActive]);
-    
-    function filterUserList() {
-      setMyListActive(true);
-      setList(
-        list.filter(
-          (serie: { showStatus: string[], status:string }) => {
-            if(serie.showStatus[0] === "added") {
-              return(serie);
-            }
-          }
-        )
-      )
-    }
 
-    function filterMyList(statusText:string) {
-      setStatusG(statusText);
-      if(myListActive) {
-        setList(
-            JSON.parse(item).filter(
-              (serie: { status: string; }) => {
-                if(serie.status === statusText) {
-                  return(serie);
-                }
-              }
-            )
-        )
-      }
-  }
+    function filterUserList() {userList({setMyListActive,setList, list});}
+
+    function filterMyList(statusText:string) {statusFilterList({setStatusG, myListActive, setList, item,statusText});}
 
     function filterHomeList() {
       setMyListActive(false);
@@ -82,7 +60,6 @@ function App() {
   return (
     <div className="App">
       <Header
-        list={list}
         filterUserList={filterUserList}
         filterHomeList={filterHomeList} />
 

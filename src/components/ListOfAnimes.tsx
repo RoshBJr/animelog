@@ -1,7 +1,6 @@
 import './ListOfAnimes.scss';
 import data from '../json/ghibli.json';
 import SingleAnime from './SingleAnime';
-import { useState } from 'react';
 import logo from '../images/cinema.svg';
 import StatusFilter from './UI/StatusFilter';
 

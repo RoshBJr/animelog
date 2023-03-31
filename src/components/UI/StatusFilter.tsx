@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './StatusFilter.scss';
-
+import changeAnimeStatus from '../../lib/changeAnimeStatus';
 interface UIProps {
     list:any[];
     setList:Function;
@@ -13,28 +13,9 @@ interface UIProps {
 export default function StatusFilter({ filterMyListG, id, list, setList, statusToShow, statusG}:UIProps) {
 
     function changeStatus(statusText:string) {
-        setList(
-            list.map(
-                single => {
-                    if(single.id === id && single.showStatus[0] === "added" ) {
-                        statusToShow = statusText;
-                        return(
-                            {
-                                id: single.id,
-                                title: single.title,
-                                img: single.img,
-                                status: statusText,
-                                showStatus: single.showStatus,
-                                numEpisodes: single.numEpisodes
-                            }
-                        );
-                    }
-                    return single;
-                }
-            )
-        )
+        
+        changeAnimeStatus({statusText, setList, list, statusToShow, id})
     }
-
 
     return(
         <div className="containerStatus">
