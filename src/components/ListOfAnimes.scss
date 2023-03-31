@@ -1,6 +1,7 @@
 @import './css/color.scss';
 
 .containerAnimes {
+    position: relative;
     flex: auto;
     background-color: $prussianBlue;
     display: flex;
@@ -8,6 +9,18 @@
 
     @media (min-width: 486px) {
         flex-flow: row wrap;
+    }
+
+    > .containerStatus {
+        position: fixed;
+        bottom: 0;
+        top: auto;
+        right: 0;
+        transform: translate(-5px, -5px);
+
+        .containerChoices {
+            transform: translate(0, -120%);
+        }
     }
 }
 
@@ -27,5 +40,17 @@
     img {
         width: 80px;
         height: 80px;
+    }
+
+    > .containerStatus {
+        position: fixed;
+        bottom: 0;
+        top: auto;
+        right: 0;
+        transform: translate(-5px, -5px);
+
+        .containerChoices {
+            transform: translate(0, -120%);
+        }
     }
 }

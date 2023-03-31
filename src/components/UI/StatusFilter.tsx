@@ -1,24 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './StatusFilter.scss';
 
 interface UIProps {
     list:any[];
     setList:Function;
-    id:string;
-    statusToShow:string
+    id?:string;
+    statusToShow?:string
+    statusG:string;
+    filterMyListG:Function;
 }
 
-export default function StatusFilter({id, list, setList, statusToShow}:UIProps) {
-
-    const [status, setStatus] = useState(statusToShow);
+export default function StatusFilter({ filterMyListG, id, list, setList, statusToShow, statusG}:UIProps) {
 
     function changeStatus(statusText:string) {
-        
         setList(
             list.map(
                 single => {
                     if(single.id === id && single.showStatus[0] === "added" ) {
-                        setStatus(statusText);
+                        statusToShow = statusText;
                         return(
                             {
                                 id: single.id,
@@ -36,14 +35,15 @@ export default function StatusFilter({id, list, setList, statusToShow}:UIProps) 
         )
     }
 
+
     return(
         <div className="containerStatus">
-            <div className="placeholder">{status}</div>
+            <div className="placeholder">{id ? statusToShow: statusG}</div>
             <div className="containerChoices">
-                <span onClick={() => changeStatus("Watching")} >Watching</span>
-                <span onClick={() => changeStatus("Completed")} >Completed</span>
-                <span onClick={() => changeStatus("Paused")} >Paused</span>
-                <span onClick={() => changeStatus("Planning")} >Planning</span>
+                <span onClick={() => id != null ? changeStatus("Watching"): filterMyListG("Watching")} >Watching</span>
+                <span onClick={() => id != null ? changeStatus("Completed"): filterMyListG("Completed")} >Completed</span>
+                <span onClick={() => id != null ? changeStatus("Paused"): filterMyListG("Paused")}>Paused</span>
+                <span onClick={() => id != null ? changeStatus("Planning"): filterMyListG("Planning")} >Planning</span>
             </div>
         </div>
     );

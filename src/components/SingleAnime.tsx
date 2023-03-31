@@ -11,9 +11,11 @@ interface UIProps {
     status:string[];
     statusText:string;
     myListActive:boolean;
+    statusG:string;
+    filterMyListG:Function;
 }
 
-export default function SingleAnime({id, img, title, status, statusText, list, setList, myListActive}:UIProps) {
+export default function SingleAnime({filterMyListG, statusG, id, img, title, status, statusText, list, setList, myListActive}:UIProps) {
     
     function addToLs() {
         setList(
@@ -25,7 +27,7 @@ export default function SingleAnime({id, img, title, status, statusText, list, s
                                 id: id,
                                 title: title,
                                 img: img,
-                                status: "none",
+                                status: "Watching",
                                 showStatus: ["added"],
                                 numEpisodes: 1
                             }
@@ -59,11 +61,22 @@ export default function SingleAnime({id, img, title, status, statusText, list, s
         </div>
         :
         <div className="singleAnime">
-            <StatusFilter statusToShow={statusText} id={id} list={list} setList={setList} />
+            <StatusFilter
+                filterMyListG={filterMyListG}
+                statusG={statusG}
+                statusToShow={statusText}
+                id={id}
+                list={list}
+                setList={setList} />
+
             <img src={img} alt={title}/>
+            
             <div className="containerInfo">
                 <h2 className="title">{title}</h2>
-                <span onClick={addToLs} className="status">{status[0]}</span>
+                <span
+                    onClick={addToLs}
+                    className="status">{status[0]}
+                </span>
             </div>
         </div>
 

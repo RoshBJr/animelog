@@ -28,7 +28,8 @@ function App() {
   // window.addEventListener("resize", () => {
   //  console.log(window.innerWidth);
   // })
-  
+
+  const [statusG, setStatusG] = useState("Watching");
   const item:any = localStorage.getItem("anime-list-ls");
   const [myList, setMyList] = useState([]);
   const [myListActive, setMyListActive] = useState(false);
@@ -40,13 +41,16 @@ function App() {
         localStorage.setItem("anime-list-ls", JSON.stringify(list));
       }
     },[list])
+
+    useEffect(() => {
+      filterMyList(statusG)
+    }, [myListActive]);
     
     function filterUserList() {
       setMyListActive(true);
-
       setList(
         list.filter(
-          (serie: { showStatus: string[]; }) => {
+          (serie: { showStatus: string[], status:string }) => {
             if(serie.showStatus[0] === "added") {
               return(serie);
             }
@@ -55,6 +59,21 @@ function App() {
       )
     }
 
+    function filterMyList(statusText:string) {
+      setStatusG(statusText);
+      if(myListActive) {
+        setList(
+            JSON.parse(item).filter(
+              (serie: { status: string; }) => {
+                if(serie.status === statusText) {
+                  return(serie);
+                }
+              }
+            )
+        )
+      }
+  }
+
     function filterHomeList() {
       setMyListActive(false);
       setList(JSON.parse(item));
@@ -62,11 +81,17 @@ function App() {
 
   return (
     <div className="App">
-      <Header list={list} filterUserList={filterUserList} filterHomeList={filterHomeList} />
+      <Header
+        list={list}
+        filterUserList={filterUserList}
+        filterHomeList={filterHomeList} />
+
       <ListOfAnimes
+        statusG={statusG}
         myListActive={myListActive}
         list={list}
         setList={setList}
+        filterMyListG={filterMyList}
       />
     </div>
   );
