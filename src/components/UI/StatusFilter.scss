@@ -1,0 +1,32 @@
+.containerStatus {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: auto;
+    width: fit-content;
+    padding: 1%;
+    // overflow: hidden;
+    background-color: black;
+    transform: translate(-5px, 5px);
+    border-radius: 4px;
+    
+    .placeholder {
+        color: white;
+    }
+
+    .containerChoices {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: fit-content;
+        display: flex;
+        flex-flow: column wrap;
+        gap: 5px;
+        background-color: black;
+        transform: translate(0%, 100%);
+    }
+    span {
+        color: white;
+        cursor: pointer;
+    }
+}

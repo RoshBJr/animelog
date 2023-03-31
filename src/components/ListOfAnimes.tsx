@@ -28,10 +28,11 @@ export default function ListOfAnimes({list, setList, myListActive}:UIProps) {
                             id={singleAnime.id}
                             img={singleAnime.img}
                             title={singleAnime.title}
-                            statusText={singleAnime.showStatus}
+                            status={singleAnime.showStatus}
                             list={list}
                             setList={setList}
                             myListActive={myListActive}
+                            statusText={singleAnime.status}
                         />
                 )
             }

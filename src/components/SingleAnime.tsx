@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './SingleAnime.scss';
+import StatusFilter from './UI/StatusFilter';
 
 interface UIProps {
     id:string;
@@ -7,11 +8,12 @@ interface UIProps {
     title:string;
     list:any[];
     setList:Function;
-    statusText:string[];
+    status:string[];
+    statusText:string;
     myListActive:boolean;
 }
 
-export default function SingleAnime({id, img, title, statusText, list, setList, myListActive}:UIProps) {
+export default function SingleAnime({id, img, title, status, statusText, list, setList, myListActive}:UIProps) {
     
     function addToLs() {
         setList(
@@ -49,18 +51,19 @@ export default function SingleAnime({id, img, title, statusText, list, setList, 
 
     return(
         myListActive ? 
-        <div className="singleAnime">
+        <div className="singleAnimeMyList">
             <img src={img} alt={title}/>
             <div className="containerInfo">
                 <h2 className="title">{title}</h2>
             </div>
         </div>
         :
-        <div className="singleAnimeMyList">
+        <div className="singleAnime">
+            <StatusFilter statusToShow={statusText} id={id} list={list} setList={setList} />
             <img src={img} alt={title}/>
             <div className="containerInfo">
                 <h2 className="title">{title}</h2>
-                <span onClick={addToLs} className="status">{statusText[0]}</span>
+                <span onClick={addToLs} className="status">{status[0]}</span>
             </div>
         </div>
 
