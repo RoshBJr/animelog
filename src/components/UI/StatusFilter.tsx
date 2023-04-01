@@ -18,7 +18,7 @@ export default function StatusFilter({myListActive,listTemp,setListTemp,filterMy
     const [actif, setActif] = useState(false);
     
     function changeStatus(statusText:string, list:any[], setList:Function) {
-        changeAnimeStatus({statusText, setList, list, statusToShow, id});
+            changeAnimeStatus({statusText, setList, list, statusToShow, id});
     }
 
     function choicesFadeIn() {
@@ -30,6 +30,20 @@ export default function StatusFilter({myListActive,listTemp,setListTemp,filterMy
             <div className="placeholder">{id ? statusToShow: statusG}</div>
             <div className={id ? `containerChoices le${id} ${actif ? "fadein": 
                             "fadeout"}`: `containerChoices ${actif ? "fadeinG": "fadeoutG"}`}>
+
+                    
+                {
+                    id ? <></>
+                    :
+
+                    <span onClick={() => {
+                        myListActive ? 
+                        changeStatus("All", listTemp, setListTemp)
+                        :
+                        console.log("nothing");
+                    }} 
+                    >All</span>
+                }
                 
                 <span onClick={() => {
                     myListActive ? 
@@ -39,6 +53,7 @@ export default function StatusFilter({myListActive,listTemp,setListTemp,filterMy
                     changeStatus("Watching", list, setList): filterMyListG("Watching")}
                 } 
                 >Watching</span>
+                
                 <span onClick={() => {
                     myListActive ? 
                         id != null ? 

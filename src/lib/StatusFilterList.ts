@@ -8,6 +8,7 @@ interface Props {
 
 function statusFilterList({setStatusG, myListActive, setList, item, statusText}:Props) {
     setStatusG(statusText);
+    console.log("filter ", statusText);
     if(myListActive) {
       setList(
           JSON.parse(item).filter(

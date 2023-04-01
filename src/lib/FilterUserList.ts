@@ -5,6 +5,7 @@ interface Props {
 }
 
 function userList({setMyListActive, setList, list}:Props) {
+  console.log("filter my list ");
     setMyListActive(true);
     setList(
         list.filter(

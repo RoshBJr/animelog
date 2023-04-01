@@ -7,6 +7,7 @@ interface Props {
 }
 
 function changeAnimeStatus({statusText, setList, list, statusToShow, id}:Props) {
+    console.log("filter was: ", statusText);
     setList(
         list.map(
             single => {

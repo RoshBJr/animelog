@@ -31,7 +31,7 @@ function App() {
   //  console.log(window.innerWidth);
   // })
 
-  const [statusG, setStatusG] = useState("Watching");
+  const [statusG, setStatusG] = useState("All");
   let item:any = localStorage.getItem("anime-list-ls");
   const [myListTemp, setMyListTemp] = useState([]);
   const [myListActive, setMyListActive] = useState(false);
