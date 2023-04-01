@@ -14,9 +14,11 @@ interface UIProps {
     myListActive:boolean;
     statusG:string;
     filterMyListG:Function;
+    listTemp:any[];
+    setListTemp:Function;
 }
 
-export default function SingleAnime({filterMyListG, statusG, id, img, title, status, statusText, list, setList, myListActive}:UIProps) {
+export default function SingleAnime({listTemp,setListTemp,filterMyListG, statusG, id, img, title, status, statusText, list, setList, myListActive}:UIProps) {
     
     function addToLs() {
         modifyAnimePropsLs({setList,list,id,title,img});
@@ -25,6 +27,17 @@ export default function SingleAnime({filterMyListG, statusG, id, img, title, sta
     return(
         myListActive ? 
         <div className="singleAnimeMyList">
+            <StatusFilter
+                myListActive={myListActive}
+                listTemp={listTemp}
+                setListTemp={setListTemp}
+                filterMyListG={filterMyListG}
+                statusG={statusG}
+                statusToShow={statusText}
+                id={id}
+                list={list}
+                setList={setList} />
+
             <img src={img} alt={title}/>
             <div className="containerInfo">
                 <h2 className="title">{title}</h2>
@@ -33,6 +46,9 @@ export default function SingleAnime({filterMyListG, statusG, id, img, title, sta
         :
         <div className="singleAnime">
             <StatusFilter
+                myListActive={myListActive}
+                listTemp={listTemp}
+                setListTemp={setListTemp}
                 filterMyListG={filterMyListG}
                 statusG={statusG}
                 statusToShow={statusText}

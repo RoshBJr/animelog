@@ -22,11 +22,28 @@ function changeAnimeStatus({statusText, setList, list, statusToShow, id}:Props) 
                             numEpisodes: single.numEpisodes
                         }
                     );
+                } else if(single.id === id && single.showStatus[0] === "add") {
+                    return(
+                        {
+                            id: id,
+                            title: single.title,
+                            img: single.img,
+                            status: statusText,
+                            showStatus: ["added"],
+                            numEpisodes: 1
+                        }
+                    );
                 }
                 return single;
             }
         )
     )
+    
+    localStorage.setItem("anime-list-ls", JSON.stringify(list));
+
+    
 }
+
+
 
 export default changeAnimeStatus;

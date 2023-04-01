@@ -10,15 +10,21 @@ interface UIProps {
     myListActive: boolean;
     statusG:string;
     filterMyListG:Function;
+    listTemp:any[];
+    setListTemp:Function;
+    filterAll:Function;
 }
 
-export default function ListOfAnimes({filterMyListG, statusG, list, setList, myListActive}:UIProps) {
+export default function ListOfAnimes({filterAll,listTemp,setListTemp,filterMyListG, statusG, list, setList, myListActive}:UIProps) {
 
     return (
         myListActive && list.length == 0 
         ?
         <div className="containerMyListVide">
             <StatusFilter
+            myListActive={myListActive}
+                listTemp={listTemp}
+                setListTemp={setListTemp}
                 filterMyListG={filterMyListG}
                 statusG={statusG}
                 list={list}
@@ -29,15 +35,24 @@ export default function ListOfAnimes({filterMyListG, statusG, list, setList, myL
         </div>
         :
         <div className="containerAnimes">
-            <StatusFilter
+            {myListActive ?
+                <StatusFilter
+                myListActive={myListActive}
+                listTemp={listTemp}
+                setListTemp={setListTemp}
                 filterMyListG={filterMyListG}
                 statusG={statusG}
                 list={list}
                 setList={setList} />
+                :
+                <></>
+            }
             {
                 list.map(
                     singleAnime =>
                         <SingleAnime
+                            listTemp={listTemp}
+                            setListTemp={setListTemp}
                             statusG={statusG}
                             key={singleAnime.id}
                             id={singleAnime.id}

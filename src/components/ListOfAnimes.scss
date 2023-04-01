@@ -12,14 +12,16 @@
     }
 
     > .containerStatus {
+        z-index: 99;
         position: fixed;
         bottom: 0;
         top: auto;
         right: 0;
         transform: translate(-5px, -5px);
-
-        .containerChoices {
-            transform: translate(0, -120%);
+        background-color: $shadowBlue;
+        
+        @media (min-width: 1570px) {
+            transform: translate(-30px, -30px);
         }
     }
 }

@@ -4,6 +4,7 @@
     position: relative;
     width: 100vw;
     height: fit-content;
+    overflow: hidden;
 
     @media (min-width: 486px) {
         width: 50vw;

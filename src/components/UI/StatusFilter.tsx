@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './StatusFilter.scss';
 import changeAnimeStatus from '../../lib/changeAnimeStatus';
+import modifyAnimePropsLs from '../../lib/addAnimeToLS';
 interface UIProps {
     list:any[];
     setList:Function;
@@ -8,23 +9,60 @@ interface UIProps {
     statusToShow?:string
     statusG:string;
     filterMyListG:Function;
+    listTemp:any[];
+    setListTemp:Function;
+    myListActive:boolean;
 }
+export default function StatusFilter({myListActive,listTemp,setListTemp,filterMyListG, id, list, setList, statusToShow, statusG}:UIProps) {
+    
+    const [actif, setActif] = useState(false);
+    
+    function changeStatus(statusText:string, list:any[], setList:Function) {
+        changeAnimeStatus({statusText, setList, list, statusToShow, id});
+    }
 
-export default function StatusFilter({ filterMyListG, id, list, setList, statusToShow, statusG}:UIProps) {
-
-    function changeStatus(statusText:string) {
-        
-        changeAnimeStatus({statusText, setList, list, statusToShow, id})
+    function choicesFadeIn() {
+        setActif(!actif);
     }
 
     return(
-        <div className="containerStatus">
+        <div onClick={choicesFadeIn} className="containerStatus">
             <div className="placeholder">{id ? statusToShow: statusG}</div>
-            <div className="containerChoices">
-                <span onClick={() => id != null ? changeStatus("Watching"): filterMyListG("Watching")} >Watching</span>
-                <span onClick={() => id != null ? changeStatus("Completed"): filterMyListG("Completed")} >Completed</span>
-                <span onClick={() => id != null ? changeStatus("Paused"): filterMyListG("Paused")}>Paused</span>
-                <span onClick={() => id != null ? changeStatus("Planning"): filterMyListG("Planning")} >Planning</span>
+            <div className={id ? `containerChoices le${id} ${actif ? "fadein": 
+                            "fadeout"}`: `containerChoices ${actif ? "fadeinG": "fadeoutG"}`}>
+                <span onClick={() => {
+                    myListActive ? 
+                        id != null ? 
+                        changeStatus("Watching", listTemp, setListTemp): filterMyListG("Watching")
+                    : id != null ? 
+                    changeStatus("Watching", list, setList): filterMyListG("Watching")}
+                } 
+                >Watching</span>
+                <span onClick={() => {
+                    myListActive ? 
+                        id != null ? 
+                        changeStatus("Completed", listTemp, setListTemp): filterMyListG("Completed")
+                    : id != null ? 
+                    changeStatus("Completed", list, setList): filterMyListG("Completed")}
+                }
+                >Completed</span>
+
+                <span onClick={() => {
+                    myListActive ? 
+                        id != null ? 
+                        changeStatus("Paused", listTemp, setListTemp): filterMyListG("Paused")
+                    : id != null ? 
+                    changeStatus("Paused", list, setList): filterMyListG("Paused")}
+                }
+                >Paused</span>
+
+                <span onClick={() => {
+                    myListActive ? 
+                        id != null ? 
+                        changeStatus("Planning", listTemp, setListTemp): filterMyListG("Planning")
+                    : id != null ? 
+                    changeStatus("Planning", list, setList): filterMyListG("Planning")}
+                } >Planning</span>
             </div>
         </div>
     );
