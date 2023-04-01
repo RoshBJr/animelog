@@ -22,7 +22,7 @@ export default function ListOfAnimes({filterAll,listTemp,setListTemp,filterMyLis
         ?
         <div className="containerMyListVide">
             <StatusFilter
-            myListActive={myListActive}
+                myListActive={myListActive}
                 listTemp={listTemp}
                 setListTemp={setListTemp}
                 filterMyListG={filterMyListG}

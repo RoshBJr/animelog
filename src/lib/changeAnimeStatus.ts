@@ -39,7 +39,7 @@ function changeAnimeStatus({statusText, setList, list, statusToShow, id}:Props) 
         )
     )
     
-    localStorage.setItem("anime-list-ls", JSON.stringify(list));
+    // localStorage.setItem("anime-list-ls", JSON.stringify(list));
 
     
 }

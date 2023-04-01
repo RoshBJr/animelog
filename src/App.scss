@@ -13,6 +13,10 @@
     flex-flow: column wrap;
 }
 
+#root {
+    background-color: $prussianBlue;
+}
+
 // @media (min-width: 576px) {
 //     .container {
 //       max-width: 540px;

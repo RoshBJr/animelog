@@ -26,7 +26,7 @@ export default function SingleAnime({listTemp,setListTemp,filterMyListG, statusG
 
     return(
         myListActive ? 
-        <div className="singleAnimeMyList">
+        <div className={`singleAnimeMyList le${id}`}>
             <StatusFilter
                 myListActive={myListActive}
                 listTemp={listTemp}

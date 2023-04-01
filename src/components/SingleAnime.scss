@@ -1,6 +1,8 @@
 @import './css/color.scss';
 
 .singleAnime, .singleAnimeMyList {
+    opacity: 0;
+    animation: .5s fadeIn .1s forwards;
     position: relative;
     width: 100vw;
     height: fit-content;
@@ -43,5 +45,30 @@
             font-family: $grossePolice;
             cursor: pointer;
         }
+    }
+}
+
+.fadeOut {
+    animation: .5s fadeOut forwards;
+}
+.fadeIn {
+    animation: .5s fadeIn forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
     }
 }

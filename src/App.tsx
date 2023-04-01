@@ -38,6 +38,10 @@ function App() {
   const [list, setList] = useState(
     item ? JSON.parse(item): jsonData)
     
+    useEffect(() => {
+          filterMyList(statusG);
+    },[localStorage.getItem("anime-list-ls")])
+    
     useEffect( () => {
       if(!myListActive) {
         localStorage.setItem("anime-list-ls", JSON.stringify(list));
@@ -51,9 +55,8 @@ function App() {
 
     useEffect( () => {
       if(myListActive) {
-        setList(myListTemp);
         localStorage.setItem("anime-list-ls", JSON.stringify(myListTemp));
-        filterUserList();
+        setList(myListTemp);
       }
     }, [myListTemp])
 

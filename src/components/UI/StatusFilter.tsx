@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './StatusFilter.scss';
 import changeAnimeStatus from '../../lib/changeAnimeStatus';
-import modifyAnimePropsLs from '../../lib/addAnimeToLS';
+
 interface UIProps {
     list:any[];
     setList:Function;
@@ -30,6 +30,7 @@ export default function StatusFilter({myListActive,listTemp,setListTemp,filterMy
             <div className="placeholder">{id ? statusToShow: statusG}</div>
             <div className={id ? `containerChoices le${id} ${actif ? "fadein": 
                             "fadeout"}`: `containerChoices ${actif ? "fadeinG": "fadeoutG"}`}>
+                
                 <span onClick={() => {
                     myListActive ? 
                         id != null ? 
