@@ -17,7 +17,7 @@
         bottom: 0;
         top: auto;
         right: 0;
-        transform: translate(-5px, -5px);
+        transform: translate(-20px, -20px);
         background-color: $shadowBlue;
         
         @media (min-width: 1570px) {
@@ -49,10 +49,6 @@
         bottom: 0;
         top: auto;
         right: 0;
-        transform: translate(-5px, -5px);
-
-        .containerChoices {
-            transform: translate(0, -120%);
-        }
+        transform: translate(-20px, -20px);
     }
 }
