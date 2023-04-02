@@ -16,6 +16,7 @@ function changeAnimeStatus({statusText, setList, list, statusToShow, id}:Props) 
                         statusToShow = statusText;
                         return(
                             {
+                                bgColor: "added",
                                 id: single.id,
                                 title: single.title,
                                 img: single.img,
@@ -27,6 +28,7 @@ function changeAnimeStatus({statusText, setList, list, statusToShow, id}:Props) 
                     } else if(single.id === id && single.showStatus[0] === "add" && statusText !== "Remove") {
                         return(
                             {
+                                bgColor: "added",
                                 id: id,
                                 title: single.title,
                                 img: single.img,
@@ -38,6 +40,7 @@ function changeAnimeStatus({statusText, setList, list, statusToShow, id}:Props) 
                     } else if(single.id === id && single.showStatus[0] === "added" && statusText === "Remove"){
                         return(
                             {
+                                bgColor: "unAdded",
                                 id: id,
                                 title: single.title,
                                 img: single.img,

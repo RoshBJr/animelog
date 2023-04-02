@@ -4,15 +4,19 @@ interface Props {
     title:string;
     list:any[];
     setList:Function;
+    bgColor:string;
+    setBgColor:Function;
 }
 
-function modifyAnimePropsLs({setList, list, id, title, img}:Props) {
+function modifyAnimePropsLs({setList, list, id, title, img, bgColor, setBgColor}:Props) {
     setList(
         list.map(
             single => {
                 if(single.id === id && single.showStatus[0] === "add") {
+                    setBgColor("unAdded");
                     return(
                         {
+                            bgColor: "added",
                             id: id,
                             title: title,
                             img: img,
@@ -23,8 +27,10 @@ function modifyAnimePropsLs({setList, list, id, title, img}:Props) {
                     );
                 }
                 else if(single.id === id && single.showStatus[0] === "added") {
+                    setBgColor("added");
                     return(
                         {
+                            bgColor: "unAdded",
                             id: id,
                             title: title,
                             img: img,

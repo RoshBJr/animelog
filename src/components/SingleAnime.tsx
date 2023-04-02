@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './SingleAnime.scss';
 import StatusFilter from './UI/StatusFilter';
 import modifyAnimePropsLs from '../lib/addAnimeToLS';
@@ -16,12 +16,14 @@ interface UIProps {
     filterMyListG:Function;
     listTemp:any[];
     setListTemp:Function;
+    bgColor:string;
+    setBgColor:Function;
 }
 
-export default function SingleAnime({listTemp,setListTemp,filterMyListG, statusG, id, img, title, status, statusText, list, setList, myListActive}:UIProps) {
-    
+export default function SingleAnime({setBgColor,bgColor,listTemp,setListTemp,filterMyListG, statusG, id, img, title, status, statusText, list, setList, myListActive}:UIProps) {
+
     function addToLs() {
-        modifyAnimePropsLs({setList,list,id,title,img});
+        modifyAnimePropsLs({setList,list,id,title,img, bgColor, setBgColor});
     }
 
     return(
@@ -45,6 +47,10 @@ export default function SingleAnime({listTemp,setListTemp,filterMyListG, statusG
         </div>
         :
         <div className="singleAnime">
+            <span
+                onClick={addToLs}
+                className={`status ${bgColor}`}>{status[0]}
+            </span>
             <StatusFilter
                 myListActive={myListActive}
                 listTemp={listTemp}
@@ -60,10 +66,6 @@ export default function SingleAnime({listTemp,setListTemp,filterMyListG, statusG
             
             <div className="containerInfo">
                 <h2 className="title">{title}</h2>
-                <span
-                    onClick={addToLs}
-                    className="status">{status[0]}
-                </span>
             </div>
         </div>
 

@@ -3,6 +3,7 @@ import data from '../json/ghibli.json';
 import SingleAnime from './SingleAnime';
 import logo from '../images/cinema.svg';
 import StatusFilter from './UI/StatusFilter';
+import { useState } from 'react';
 
 interface UIProps {
     list:any[];
@@ -16,6 +17,8 @@ interface UIProps {
 }
 
 export default function ListOfAnimes({filterAll,listTemp,setListTemp,filterMyListG, statusG, list, setList, myListActive}:UIProps) {
+    
+    const [bgColor, setBgColor] = useState("unAdded");
 
     return (
         myListActive && list.length == 0 
@@ -51,6 +54,8 @@ export default function ListOfAnimes({filterAll,listTemp,setListTemp,filterMyLis
                 list.map(
                     singleAnime =>
                         <SingleAnime
+                            bgColor={singleAnime.bgColor}
+                            setBgColor={setBgColor}
                             listTemp={listTemp}
                             setListTemp={setListTemp}
                             statusG={statusG}

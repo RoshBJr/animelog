@@ -13,6 +13,7 @@ data.films.map(
   serie => {
     jsonData.push(
     {
+      bgColor: "unAdded",
       id: serie.id,
       title: serie.title,
       img: serie.image,

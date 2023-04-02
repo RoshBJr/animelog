@@ -11,12 +11,15 @@
     @media (min-width: 486px) {
         width: 50vw;
     }
-
-    @media (min-width: 1100px) {
+    
+    @media (min-width: 820px) {
         width: calc(100vw/3);
     }
-    @media (min-width: 1570px) {
+    @media (min-width: 1100px) {
         width: calc(100vw/4);
+    }
+    @media (min-width: 1570px) {
+        width: calc(100vw/5);
     }
 
     img {
@@ -24,6 +27,20 @@
         height: auto;        
     }
 
+    .status {
+        cursor: pointer;
+        color: white;
+        transition: all 200ms linear;
+        // background-color: $shadowBlue;
+        padding: 1%;
+        border-radius: 5px;
+        transform: translate(10px, 10px);
+        position: absolute;
+        top: 0;
+        left: 0;
+        // font-size: 30px;
+    }
+    
     .containerInfo {
         position: absolute;
         bottom: 0;
@@ -53,6 +70,13 @@
 }
 .fadeIn {
     animation: .5s fadeIn forwards;
+}
+
+.added {
+    background-color: green;
+}
+.unAdded {
+    background-color: $shadowBlue;
 }
 
 @keyframes fadeIn {
