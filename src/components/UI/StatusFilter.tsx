@@ -18,7 +18,11 @@ export default function StatusFilter({myListActive,listTemp,setListTemp,filterMy
     const [actif, setActif] = useState(false);
     
     function changeStatus(statusText:string, list:any[], setList:Function) {
-            changeAnimeStatus({statusText, setList, list, statusToShow, id});
+            if(statusText === "All") {
+                filterMyListG(statusText);
+            } else {
+                changeAnimeStatus({statusText, setList, list, statusToShow, id});
+            }
     }
 
     function choicesFadeIn() {

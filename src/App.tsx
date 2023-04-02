@@ -39,7 +39,7 @@ function App() {
     item ? JSON.parse(item): jsonData)
     
     useEffect(() => {
-          filterMyList(statusG);
+          if(myListActive) filterMyList(statusG);
     },[localStorage.getItem("anime-list-ls")])
     
     useEffect( () => {

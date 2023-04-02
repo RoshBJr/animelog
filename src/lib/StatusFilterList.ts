@@ -9,7 +9,8 @@ interface Props {
 function statusFilterList({setStatusG, myListActive, setList, item, statusText}:Props) {
     setStatusG(statusText);
     console.log("filter ", statusText);
-    if(myListActive) {
+    if(myListActive && statusText !== "All") {
+      console.log("in if");
       setList(
           JSON.parse(item).filter(
             (serie: { status: string; }) => {
@@ -19,6 +20,17 @@ function statusFilterList({setStatusG, myListActive, setList, item, statusText}:
             }
           )
       )
+    } else {
+      console.log('in else');
+      setList(
+        JSON.parse(item).filter(
+          (serie: { showStatus: string[]; }) => {
+            if(serie.showStatus[0] === "added") {
+              return(serie);
+            }
+          }
+        )
+    )
     }
 }
 
