@@ -12,7 +12,7 @@ function changeAnimeStatus({statusText, setList, list, statusToShow, id}:Props) 
         setList(
             list.map(
                 single => {
-                    if(single.id === id && single.showStatus[0] === "added") {
+                    if(single.id === id && single.showStatus[0] === "added" && statusText !== "Remove") {
                         statusToShow = statusText;
                         return(
                             {
@@ -24,7 +24,7 @@ function changeAnimeStatus({statusText, setList, list, statusToShow, id}:Props) 
                                 numEpisodes: single.numEpisodes
                             }
                         );
-                    } else if(single.id === id && single.showStatus[0] === "add") {
+                    } else if(single.id === id && single.showStatus[0] === "add" && statusText !== "Remove") {
                         return(
                             {
                                 id: id,
@@ -32,6 +32,17 @@ function changeAnimeStatus({statusText, setList, list, statusToShow, id}:Props) 
                                 img: single.img,
                                 status: statusText,
                                 showStatus: ["added"],
+                                numEpisodes: 1
+                            }
+                        );
+                    } else if(single.id === id && single.showStatus[0] === "added" && statusText === "Remove"){
+                        return(
+                            {
+                                id: id,
+                                title: single.title,
+                                img: single.img,
+                                status: "none",
+                                showStatus: ["add"],
                                 numEpisodes: 1
                             }
                         );

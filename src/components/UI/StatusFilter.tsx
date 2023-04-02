@@ -37,16 +37,21 @@ export default function StatusFilter({myListActive,listTemp,setListTemp,filterMy
 
                     
                 {
-                    id ? <></>
-                    :
-
-                    <span onClick={() => {
-                        myListActive ? 
-                        changeStatus("All", listTemp, setListTemp)
-                        :
-                        console.log("nothing");
+                    id && statusToShow !== "none" && myListActive ? <span onClick={() => { 
+                        changeStatus("Remove", listTemp, setListTemp)
                     }} 
-                    >All</span>
+                    >Remove</span> 
+                    :
+                    !myListActive ?
+                        <></>
+                        :
+                        <span onClick={() => {
+                            myListActive ? 
+                            changeStatus("All", listTemp, setListTemp)
+                            :
+                            console.log("nothing");
+                        }} 
+                        >All</span>
                 }
                 
                 <span onClick={() => {
