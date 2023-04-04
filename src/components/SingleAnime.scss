@@ -5,7 +5,7 @@
     animation: .5s fadeIn .1s forwards;
     position: relative;
     width: 100vw;
-    height: fit-content;
+    height: auto;
     overflow: hidden;
 
     @media (min-width: 486px) {

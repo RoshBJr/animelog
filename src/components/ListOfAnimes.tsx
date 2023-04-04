@@ -13,10 +13,9 @@ interface UIProps {
     filterMyListG:Function;
     listTemp:any[];
     setListTemp:Function;
-    filterAll:Function;
 }
 
-export default function ListOfAnimes({filterAll,listTemp,setListTemp,filterMyListG, statusG, list, setList, myListActive}:UIProps) {
+export default function ListOfAnimes({listTemp,setListTemp,filterMyListG, statusG, list, setList, myListActive}:UIProps) {
     
     const [bgColor, setBgColor] = useState("unAdded");
 
