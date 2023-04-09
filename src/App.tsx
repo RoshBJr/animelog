@@ -6,63 +6,63 @@ import ListOfAnimes from './components/ListOfAnimes';
 import data from './json/ghibli.json';
 import userList from './lib/FilterUserList';
 import statusFilterList from './lib/StatusFilterList';
-// import {url, options} from './lib/fetchAnimeAPI';
+import {url, options} from './lib/fetchAnimeAPI';
 
 const jsonData:any = [];
 
 
-data.films.map(
-  (          serie: { id: string; title: any; image: any; }) => {
-    jsonData.push(
-    {
-      bgColor: "unAdded",
-      id: serie.id,
-      title: serie.title,
-      img: serie.image,
-      status: "none",
-      showStatus: ["add"],
-      numEpisodes: 1
-    })
-  }
-)
+// data.films.map(
+//   (          serie: { id: string; title: any; image: any; }) => {
+//     jsonData.push(
+//     {
+//       bgColor: "unAdded",
+//       id: serie.id,
+//       title: serie.title,
+//       img: serie.image,
+//       status: "none",
+//       showStatus: ["add"],
+//       numEpisodes: 1
+//     })
+//   }
+// )
 
 
 function App() {
-  // useful for responsive development
-  // window.addEventListener("resize", () => {
-  //  console.log(window.innerWidth);
-  // })
+//   useful for responsive development
+//   window.addEventListener("resize", () => {
+//    console.log(window.innerWidth);
+//   })
 
-// const [apiData, setApiData] = useState([]);
+const [apiData, setApiData] = useState([]);
 
-// const fetchData:any = async () => {
-//   const response:any = await fetch(url, options);
-//   const theData = await response.json();
+const fetchData:any = async () => {
+  const response:any = await fetch(url, options);
+  const theData = await response.json();
   
-//   theData['data']?.Page.media.map(
-//     (          serie: { id: number; title: string; coverImage: string; }) => {
-//       jsonData.push(
-//       {
-//         bgColor: "unAdded",
-//         id: serie.id,
-//         title: serie.title['english'],
-//         img: serie.coverImage['extraLarge'],
-//         status: "none",
-//         showStatus: ["add"],
-//         numEpisodes: 1
-//       })
-//     }
-//   )
-//   setApiData(jsonData);
-//   // setList(jsonData);
-//   // return jsonData;
+  theData['data']?.Page.media.map(
+    (          serie: { id: number; title: string; coverImage: string; }) => {
+      jsonData.push(
+      {
+        bgColor: "unAdded",
+        id: serie.id,
+        title: serie.title['english'],
+        img: serie.coverImage['extraLarge'],
+        status: "none",
+        showStatus: ["add"],
+        numEpisodes: 1
+      })
+    }
+  )
+  setApiData(jsonData);
+  setList(jsonData);
+  // return jsonData;
 
-// } 
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
+} 
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  // useEffect(() => {if(!item){setList(apiData)}} ,[apiData] );
+  useEffect(() => {if(!item){setList(apiData)}} ,[apiData] );
   
 
   const [statusG, setStatusG] = useState("All");

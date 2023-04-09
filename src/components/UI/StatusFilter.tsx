@@ -12,10 +12,14 @@ interface UIProps {
     listTemp:any[];
     setListTemp:Function;
     myListActive:boolean;
+    filterOpen?:boolean;
+    setfilterOpen?:Function;
 }
-export default function StatusFilter({myListActive,listTemp,setListTemp,filterMyListG, id, list, setList, statusToShow, statusG}:UIProps) {
+
+export default function StatusFilter({setfilterOpen,filterOpen, myListActive,listTemp,setListTemp,filterMyListG, id, list, setList, statusToShow, statusG}:UIProps) {
     
-    const [actif, setActif] = useState(false);
+
+    // const [actif, setActif] = useState(filterOpen);
     
     function changeStatus(statusText:string, list:any[], setList:Function) {
             if(statusText === "All") {
@@ -26,14 +30,15 @@ export default function StatusFilter({myListActive,listTemp,setListTemp,filterMy
     }
 
     function choicesFadeIn() {
-        setActif(!actif);
+        // setActif(!actif);
+        if(setfilterOpen) setfilterOpen(!filterOpen);
     }
 
     return(
         <div onClick={choicesFadeIn} className="containerStatus">
             <div className="placeholder">{id ? statusToShow: statusG}</div>
-            <div className={id ? `containerChoices le${id} ${actif ? "fadein": 
-                            "fadeout"}`: `containerChoices ${actif ? "fadeinG": "fadeoutG"}`}>
+            <div className={id ? `containerChoices le${id} ${filterOpen ? "fadein": 
+                            "fadeout"}`: `containerChoices ${filterOpen ? "fadeinG": "fadeoutG"}`}>
 
                     
                 {

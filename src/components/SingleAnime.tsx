@@ -22,6 +22,9 @@ interface UIProps {
 
 export default function SingleAnime({setBgColor,bgColor,listTemp,setListTemp,filterMyListG, statusG, id, img, title, status, statusText, list, setList, myListActive}:UIProps) {
 
+    const [filteractif, setfilterActif] = useState(false);
+
+
     function addToLs() {
         modifyAnimePropsLs({setList,list,id,title,img, bgColor, setBgColor});
     }
@@ -38,7 +41,10 @@ export default function SingleAnime({setBgColor,bgColor,listTemp,setListTemp,fil
                 statusToShow={statusText}
                 id={id}
                 list={list}
-                setList={setList} />
+                setList={setList} 
+                filterOpen={filteractif}
+                setfilterOpen={setfilterActif}
+                />
 
             <img src={img} alt={title}/>
             <div className="containerInfo">
@@ -60,9 +66,12 @@ export default function SingleAnime({setBgColor,bgColor,listTemp,setListTemp,fil
                 statusToShow={statusText}
                 id={id}
                 list={list}
-                setList={setList} />
+                setList={setList} 
+                filterOpen={filteractif}
+                setfilterOpen={setfilterActif}
+                />
 
-            <img src={img} alt={title}/>
+            <img onClick={() => setfilterActif(false)} src={img} alt={title}/>
             
             <div className="containerInfo">
                 <h2 className="title">{title}</h2>
