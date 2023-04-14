@@ -22,7 +22,8 @@ function modifyAnimePropsLs({setList, list, id, title, img, bgColor, setBgColor}
                             img: img,
                             status: "Watching",
                             showStatus: ["added"],
-                            numEpisodes: 1
+                            numEpisodes: single.numEpisodes,
+                            currentEpisode: single.currentEpisode
                         }
                     );
                 }
@@ -36,7 +37,8 @@ function modifyAnimePropsLs({setList, list, id, title, img, bgColor, setBgColor}
                             img: img,
                             status: "none",
                             showStatus: ["add"],
-                            numEpisodes: 1
+                            numEpisodes: single.numEpisodes,
+                            currentEpisode: single.currentEpisode
                         }
                     );
                 }

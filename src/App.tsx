@@ -3,68 +3,56 @@ import './App.scss';
 import { useState } from 'react';
 import Header from './components/Header';
 import ListOfAnimes from './components/ListOfAnimes';
-import data from './json/ghibli.json';
+// import data from './json/ghibli.json';
 import userList from './lib/FilterUserList';
 import statusFilterList from './lib/StatusFilterList';
-// import {url, options} from './lib/fetchAnimeAPI';
+import {url, options} from './lib/fetchAnimeAPI';
 
 const jsonData:any = [];
 
-
-data.films.map(
-  (          serie: { id: string; title: any; image: any; }) => {
-    jsonData.push(
-    {
-      bgColor: "unAdded",
-      id: serie.id,
-      title: serie.title,
-      img: serie.image,
-      status: "none",
-      showStatus: ["add"],
-      numEpisodes: 1
-    })
-  }
-)
-
-
 function App() {
+  
   // useful for responsive development
   // window.addEventListener("resize", () => {
   //  console.log(window.innerWidth);
   // })
 
-// const [apiData, setApiData] = useState([]);
+const [apiData, setApiData] = useState([]);
 
-// const fetchData:any = async () => {
-//   const response:any = await fetch(url, options);
-//   const theData = await response.json();
+const fetchData:any = async () => {
+  const response:any = await fetch(url, options);
+  const theData = await response.json();
+  console.log(theData);
+  theData['data']?.Page.media.map(
+    (          serie: { id: number; title: string; coverImage: string; episodes: number; description:string; }) => {
+      jsonData.push(
+      {
+        bgColor: "unAdded",
+        id: serie.id,
+        title: serie.title['romaji'],
+        img: serie.coverImage['extraLarge'],
+        status: "none",
+        showStatus: ["add"],
+        numEpisodes: serie.episodes,
+        currentEpisode: 0,
+        desc: serie.description
+      })
+    }
+  )
+  setApiData(jsonData);
+  setList(jsonData);
+  return jsonData;
+
+} 
+  useEffect(() => {
+    if(item == null) {
+      fetchData();
+
+    }
+  }, []);
+
   
-//   theData['data']?.Page.media.map(
-//     (          serie: { id: number; title: string; coverImage: string; }) => {
-//       jsonData.push(
-//       {
-//         bgColor: "unAdded",
-//         id: serie.id,
-//         title: serie.title['english'],
-//         img: serie.coverImage['extraLarge'],
-//         status: "none",
-//         showStatus: ["add"],
-//         numEpisodes: 1
-//       })
-//     }
-//   )
-//   setApiData(jsonData);
-//   // setList(jsonData);
-//   // return jsonData;
-
-// } 
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
-
-  // useEffect(() => {if(!item){setList(apiData)}} ,[apiData] );
   
-
   const [statusG, setStatusG] = useState("All");
   let item:any = localStorage.getItem("anime-list-ls");
   const [myListTemp, setMyListTemp] = useState([]);
@@ -72,6 +60,8 @@ function App() {
   const [list, setList] = useState(
     item ? JSON.parse(item): jsonData);
     
+    useEffect(() => {if(!item){setList(apiData)}} ,[apiData] );
+
     useEffect(() => {
           if(myListActive) filterMyList(statusG);
     },[localStorage.getItem("anime-list-ls")])

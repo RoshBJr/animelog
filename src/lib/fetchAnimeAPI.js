@@ -1,15 +1,19 @@
 var query = `
 query {
   Page {
-    media(isAdult: false, sort: POPULARITY_DESC) {
+    
+    media(seasonYear: 2022) {
       id
       title {
-        romaji
+        native
         english
+        romaji
       }
       coverImage {
         extraLarge
       }
+      episodes
+      description
     }
   }
 }

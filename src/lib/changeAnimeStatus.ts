@@ -22,7 +22,8 @@ function changeAnimeStatus({statusText, setList, list, statusToShow, id}:Props) 
                                 img: single.img,
                                 status: statusText,
                                 showStatus: single.showStatus,
-                                numEpisodes: single.numEpisodes
+                                numEpisodes: single.numEpisodes,
+                                currentEpisode: single.currentEpisode
                             }
                         );
                     } else if(single.id === id && single.showStatus[0] === "add" && statusText !== "Remove") {
@@ -34,7 +35,8 @@ function changeAnimeStatus({statusText, setList, list, statusToShow, id}:Props) 
                                 img: single.img,
                                 status: statusText,
                                 showStatus: ["added"],
-                                numEpisodes: 1
+                                currentEpisode: single.currentEpisode,
+                                numEpisodes: single.numEpisodes
                             }
                         );
                     } else if(single.id === id && single.showStatus[0] === "added" && statusText === "Remove"){
@@ -46,7 +48,8 @@ function changeAnimeStatus({statusText, setList, list, statusToShow, id}:Props) 
                                 img: single.img,
                                 status: "none",
                                 showStatus: ["add"],
-                                numEpisodes: 1
+                                currentEpisode: single.currentEpisode,
+                                numEpisodes: single.numEpisodes
                             }
                         );
                     }

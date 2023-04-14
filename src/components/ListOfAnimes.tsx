@@ -63,6 +63,8 @@ export default function ListOfAnimes({listTemp,setListTemp,filterMyListG, status
                             img={singleAnime.img}
                             title={singleAnime.title}
                             status={singleAnime.showStatus}
+                            currentEp={singleAnime.currentEpisode}
+                            totalEp={singleAnime.numEpisodes}
                             list={list}
                             setList={setList}
                             myListActive={myListActive}
